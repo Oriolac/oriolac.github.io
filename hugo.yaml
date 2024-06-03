@@ -1,4 +1,65 @@
-baseURL: https://example.org/
+baseURL: "https://oriolac.github.io/"
 languageCode: en-us
-title: My New Hugo Site
+title: Oriol Alàs Cercós
 theme: ["PaperMod"]
+copyright: Oriol Alàs Cercós
+
+menu:
+  main:
+    - identifier: posts
+      name: Posts
+      url: /
+      weight: 1
+    - identifier: categories
+      name: Categories
+      url: /categories/
+      weight: 2
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 3
+    - identifier: series
+      name: Series
+      url: /series/
+      weight: 4
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 5
+math: true
+
+taxonomies:
+  tag: tags
+  category: categories
+  series: series
+params:
+  env: production
+  author: "Oriol Alàs Cercós"
+  homeInfoParams:
+    Title: "Hi there 👋"
+    Content: Its Oriol! This blog is my space to document cool projects, share tips, and maybe even a few AI-generated funnies. Stick around to see what I'm up to and maybe learn something new along the way! 🚀
+  keywords: [blog, page]
+  
+  socialIcons: # optional
+    - name: Github
+      url: "https://github.com/oriolac/"
+    - name: Linkedin
+      url: "https://www.linkedin.com/in/oriolac/"
+
+  ShowReadingTime: true
+  ShowShareButtons: True
+  ShareButtons: ["linkedin", "twitter"]
+  ShowBreadCrumbs: true
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  ShowFullTextinRSS: true
+
+  fuseOpts:
+    isCaseSensitive: false
+
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search

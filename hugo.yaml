@@ -2,7 +2,7 @@ baseURL: "https://oriolac.github.io/"
 languageCode: en-us
 title: Oriol Alàs Cercós
 theme: ["PaperMod"]
-copyright: Oriol Alàs Cercós
+copyright: © 2024 Oriol Alàs Cercós
 
 menu:
   main:
@@ -32,6 +32,7 @@ taxonomies:
   tag: tags
   category: categories
   series: series
+
 params:
   env: production
   author: "Oriol Alàs Cercós"
@@ -53,10 +54,12 @@ params:
   ShowPostNavLinks: true
   ShowCodeCopyButtons: true
   ShowFullTextinRSS: true
+  
 
   fuseOpts:
     isCaseSensitive: false
-
+  assets:
+    favicon: "/icons8-broccoli-stickers-96.png"
 
 outputs:
   home:

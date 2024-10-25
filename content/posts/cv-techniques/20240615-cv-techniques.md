@@ -18,7 +18,7 @@ When the task is to distinguish the background from the foreground, thresholding
 
 This technique segments an image by assigning one value (typically white) to all pixels above a specified threshold and another value (usually black) to the remaining pixels. Thresholding is a simple yet effective method for separating objects from the background, especially when the background is not complicated.
 
-![Thresholding ](https://raw.githubusercontent.com/Oriolac/oriolac.github.io/refs/heads/main/content/posts/cv-techniques/imgs/histogram.png?raw=true#center)
+![Thresholding ](https://raw.githubusercontent.com/Oriolac/oriolac.github.io/refs/heads/main/content/posts/cv-techniques/imgs/histogram1.png?raw=true#center)
 
 Code of the histogram:
 ```python

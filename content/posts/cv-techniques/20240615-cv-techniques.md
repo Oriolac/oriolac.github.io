@@ -3,7 +3,7 @@ title = 'Thresholding, filtering and morphological operations'
 date = 2024-10-25T17:51:55+02:00
 tags = ['computer-vision', 'traditional-computer-vision']
 [cover]
-    image = "https://raw.githubusercontent.com/Oriolac/oriolac.github.io/refs/heads/main/content/posts/cv-techniques/imgs/text_image.png?raw=true"
+    image = "https://raw.githubusercontent.com/Oriolac/oriolac.github.io/refs/heads/main/content/posts/cv-techniques/imgs/thresholding_caption.png?raw=true"
     # caption = "Generated using [OG Image Playground by Vercel](https://og-playground.vercel.app/)"
 
 +++

@@ -10,9 +10,9 @@ menu:
       name: Posts
       url: /
       weight: 1
-    - identifier: categories
-      name: Categories
-      url: /categories/
+    - identifier: archive
+      name: Archive
+      url: /archives/
       weight: 2
     - identifier: tags
       name: Tags
@@ -38,7 +38,7 @@ params:
   author: "Oriol Alàs Cercós"
   homeInfoParams:
     Title: "Hi there 👋"
-    Content: Its Oriol! This blog is my space to document cool projects, share tips, and maybe even a few AI-generated funnies. Stick around to see what I'm up to and maybe learn something new along the way! 🚀
+    Content: Its Oriol! This blog is my space to document cool projects, share tips, and maybe even a few AI-generated funnies. 🥦 Stick around to see what I'm up to and maybe learn something new along the way! 🚀
   keywords: [blog, page]
   
   socialIcons: # optional
@@ -54,12 +54,18 @@ params:
   ShowPostNavLinks: true
   ShowCodeCopyButtons: true
   ShowFullTextinRSS: true
+  ShowToc: true
+  ShowRssButtonInSectionTermList: true
   
 
   fuseOpts:
     isCaseSensitive: false
   assets:
     favicon: "/icons8-broccoli-stickers-96.png"
+
+markup:
+  defaultMarkdownHandler: goldmark
+
 
 outputs:
   home:

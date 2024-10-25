@@ -14,11 +14,11 @@ tags = ['computer-vision', 'traditional-computer-vision']
 
 When the task is to distinguish the background from the foreground, thresholding provides a straightforward solution. We will use this image as an example.
 
-![Example image](https://github.com/Oriolac/oriolac.github.io/blob/main/content/posts/cv-tehcniques/imgs/text_image.png)
+![Example image](https://raw.githubusercontent.com/Oriolac/oriolac.github.io/refs/heads/main/content/posts/cv-techniques/imgs/text_image.png?raw=true)
 
 This technique segments an image by assigning one value (typically white) to all pixels above a specified threshold and another value (usually black) to the remaining pixels. Thresholding is a simple yet effective method for separating objects from the background, especially when the background is not complicated.
 
-![Thresholding ](https://github.com/Oriolac/oriolac.github.io/blob/main/content/posts/cv-tehcniques/imgs/histogram.png)
+![Thresholding ](https://raw.githubusercontent.com/Oriolac/oriolac.github.io/refs/heads/main/content/posts/cv-techniques/imgs/histogram.png?raw=true)
 
 Code of the histogram:
 ```python
@@ -44,17 +44,17 @@ threshold = 130
 threshold, binary_image = cv2.threshold(image, threshold, 255, cv2.THRESH_BINARY) # The first element of the response is worthless here.
 ```
 
-![Histogram binary thresholding](https://github.com/Oriolac/oriolac.github.io/blob/main/content/posts/cv-tehcniques/imgs/binary_histogram.png)
+![Histogram binary thresholding](https://raw.githubusercontent.com/Oriolac/oriolac.github.io/refs/heads/main/content/posts/cv-techniques/imgs/binary_histogram.png)
 
 In our case, the image should turn into:
 
-![Binary thresholding](https://github.com/Oriolac/oriolac.github.io/blob/main/content/posts/cv-tehcniques/imgs/binary_img.png)
+![Binary thresholding](https://raw.githubusercontent.com/Oriolac/oriolac.github.io/refs/heads/main/content/posts/cv-techniques/imgs/binary-img.png)
 
 ## Otsu Thresholding
 
 But... how to find the best threshold? Well, a japanese person named Otsu did a greatjob. **Otsu's thresholding** is an automatic method that calculates the _optimal threshold_ value by minimizing the intra-class variance. This technique is particularly useful for images with bimodal histograms.
 
-![alt text](https://github.com/Oriolac/oriolac.github.io/blob/main/content/posts/cv-tehcniques/imgs/otsu_hist.png)
+![alt text](https://raw.githubusercontent.com/Oriolac/oriolac.github.io/refs/heads/main/content/posts/cv-techniques/imgs/otsu_hist.png)
 
 ```python
 otsu_threshold, otsued_img = cv2.threshold(img ,0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
@@ -62,7 +62,7 @@ otsu_threshold, otsued_img = cv2.threshold(img ,0, 255, cv2.THRESH_BINARY | cv2.
 
 In our case, the image should turn into:
 
-![alt text](https://github.com/Oriolac/oriolac.github.io/blob/main/content/posts/cv-tehcniques/imgs/otsu_image.png)
+![alt text](https://raw.githubusercontent.com/Oriolac/oriolac.github.io/refs/heads/main/content/posts/cv-techniques/imgs/otsu_image.png)
 
 ## Adaptive Thresholding
 
@@ -79,7 +79,7 @@ adaptive_threshold_img = cv2.adaptiveThreshold(
 
 In this case, **adaptative thresholding** success thresholding by avoiding background variations.
 
-![Comparison of different images](https://github.com/Oriolac/oriolac.github.io/blob/main/content/posts/cv-tehcniques/imgs/comparison.png)
+![Comparison of different images](https://raw.githubusercontent.com/Oriolac/oriolac.github.io/refs/heads/main/content/posts/cv-techniques/imgs/comparison.png)
 
 ```python
 fig, axs = plt.subplots(3, 1, figsize=(6, 10))

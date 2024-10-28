@@ -30,10 +30,11 @@
   </header>
   {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
   {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
-  {{- if (.Param "ShowToc") }}
-  {{- partial "toc.html" . }}
-  {{- end }}
-
+  <aside class="toc-container">
+    {{- if (.Param "ShowToc") }}
+      {{- partial "toc.html" . }}
+      {{- end }}
+    </aside>
   {{- if .Content }}
   <div class="post-content">
     {{- if not (.Param "disableAnchoredHeadings") }}
@@ -63,5 +64,19 @@
   {{- partial "comments.html" . }}
   {{- end }}
 </article>
+<script>
+  document.addEventListener('scroll', () => {
+    const toc = document.querySelector('.toc-container');
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+
+    // Define a maximum scroll effect limit, adjust as needed
+    const maxScrollEffect = 200; 
+    const initialTop = 230; // Initial top position
+
+    // Calculate the new top position based on scroll, clamping it to a minimum of (initialTop - maxScrollEffect)
+    toc.style.top = `${Math.max(initialTop - scrollY * 0.1, initialTop - maxScrollEffect)}px`;
+});
+
+</script>
 
 {{- end }}{{/* end main */}}

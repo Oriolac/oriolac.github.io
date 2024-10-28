@@ -73,6 +73,50 @@
     font-size: 20px;
 }
 
+.content-container {
+    display: flex;
+    max-width: var(--main-width); /* Ensures that content stays within the defined width */
+    margin: 0 auto; /* Center the content container if desired */
+}
+
+.toc-container {
+    position: fixed;
+    top: 230px; /* Initial top position */
+    left: calc(50% - var(--main-width) / 2 - 320px); /* Positioning for larger screens */
+    width: 300px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    transition: top 0.3s ease; /* Smooth transition for top changes */
+}
+
+.main-content {
+    margin-left: 280px; /* Adjust based on toc-container width */
+    flex-grow: 1;
+}
+
+
+/* Responsive adjustment for small screens */
+@media (max-width: 1724px) {
+    /* Remove fixed positioning and make the ToC inline */
+    .toc-container {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-height: none; /* Allows ToC to expand as needed */
+        margin-bottom: 20px; /* Space below ToC for readability */
+        overflow: visible; /* Allows content to expand normally */
+    }
+
+    .content-container {
+        display: block; /* Stacks content in a single column */
+    }
+
+    .main-content {
+        margin-left: 0; /* Remove left margin for full-width content */
+    }
+}
+  
 .post-content a,
 .toc a:hover {
     box-shadow: 0 1px 0;

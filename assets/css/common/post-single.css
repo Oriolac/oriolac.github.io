@@ -96,7 +96,7 @@
 
 
 /* Responsive adjustment for small screens */
-@media (max-width: 1724px) {
+@media (max-width: 1200px) {
     /* Remove fixed positioning and make the ToC inline */
     .toc-container {
         position: relative;

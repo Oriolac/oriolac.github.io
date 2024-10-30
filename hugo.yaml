@@ -6,6 +6,10 @@ copyright: © 2024 Oriol Alàs Cercós
 
 menu:
   main:
+    #- identifier: about-me
+    #  name: About me
+    #  url: /about-me
+    #  weight: 1
     - identifier: posts
       name: Posts
       url: /
@@ -18,15 +22,14 @@ menu:
       name: Tags
       url: /tags/
       weight: 3
-    - identifier: series
-      name: Series
-      url: /series/
-      weight: 4
+    #- identifier: series
+    #  name: Series
+    #  url: /series/
+    #  weight: 4
     - identifier: search
       name: Search
       url: /search/
-      weight: 5
-math: true
+      weight: 4
 
 taxonomies:
   tag: tags
@@ -46,6 +49,8 @@ params:
       url: "https://github.com/oriolac/"
     - name: Linkedin
       url: "https://www.linkedin.com/in/oriolac/"
+    - name: RSS
+      url: "http://localhost:1313/index.xml"
 
   ShowReadingTime: true
   ShowShareButtons: True
@@ -56,7 +61,7 @@ params:
   ShowFullTextinRSS: true
   ShowToc: true
   ShowRssButtonInSectionTermList: true
-  
+  math: true
 
   fuseOpts:
     isCaseSensitive: false
@@ -72,3 +77,5 @@ outputs:
     - HTML
     - RSS
     - JSON # necessary for search
+
+enableRobotsTXT: true

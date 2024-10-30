@@ -5,7 +5,6 @@ tags = ['computer-vision', 'traditional-computer-vision']
 [cover]
     image = "https://raw.githubusercontent.com/Oriolac/oriolac.github.io/refs/heads/main/content/posts/cv-techniques/imgs/thresholding_caption.png?raw=true"
     # caption = "Generated using [OG Image Playground by Vercel](https://og-playground.vercel.app/)"
-
 +++
 
 **Traditional computer vision techniques** involve methods and algorithms that do not rely on deep learning or neural networks. Instead, these approaches are not data-driven and they use classical approaches to process and analyze images. So, in this post, we'll explore **three thresholding techniques!**

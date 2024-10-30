@@ -2,9 +2,11 @@
 title: "About me"
 draft: true
 toc: true
+date: 2024-03-25T17:51:55+02:00
 ---
 
 ## Employment 
+
 
 **Applied Artificial Intelligence Researcher**
 *Eurecat Centre Tecnològic*  
@@ -82,9 +84,11 @@ toc: true
 - [LoBot project](https://github.com/LleidaHack/hackeps-2020-discordbot)
 - [LleidaHack](https://lleidahack.dev)
 
+## You can find me also in...
 
-<details open>
-<summary>I automatically open</summary>
-<br>
-Waaa, you see me. I thought I would be hidden ;p .
-</details>
+{{< rawhtml >}}
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; row-gap: 20px">
+<iframe width="375" height="215" src="https://www.youtube.com/embed/H3j8BlXX5ic?si=48aJwnEaGNXQwZRq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="375" height="215" src="https://www.youtube.com/embed/pbzhMW2mgbg?si=_qsVckosEbNwMSql" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+{{< /rawhtml >}}

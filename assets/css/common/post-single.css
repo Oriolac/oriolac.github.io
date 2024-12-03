@@ -35,6 +35,8 @@
 .post-content {
     color: var(--content);
     text-align: justify;
+    font-family: Roboto;
+    line-height: calc(1em + 1.3rem);
 }
 
 .post-content h3,
@@ -72,6 +74,13 @@
 
 .post-content p {
     font-size: 18px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+
+.post-content figcaption {
+    line-height: calc(1em + .75rem);
+
 }
 
 .content-container {

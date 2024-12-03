@@ -61,6 +61,7 @@ params:
   ShowFullTextinRSS: true
   ShowToc: true
   ShowRssButtonInSectionTermList: true
+  SiteDescription: Its Oriol! This blog is my space to document cool projects, share tips, and maybe even a few AI-generated funnies. 🥦 Stick around to see what I'm up to and maybe learn something new along the way! 🚀
   math: true
 
   fuseOpts:
@@ -70,7 +71,19 @@ params:
 
 markup:
   defaultMarkdownHandler: goldmark
-
+  goldmark:
+    extensions:
+      passthrough:
+        delimiters:
+          block:
+          - - \[
+            - \]
+          - - $$
+            - $$
+          inline:
+          - - \(
+            - \)
+        enable: true
 
 outputs:
   home:

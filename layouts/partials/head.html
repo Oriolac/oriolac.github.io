@@ -8,8 +8,9 @@
 {{- end }}
 
 {{- /* Title */}}
-<title>{{ if .IsHome }}{{ else }}{{ if .Title }}{{ .Title }} | {{ end }}{{ end }}{{ site.Title }}</title>
-<meta name="description" content="{{ .Description | default .Site.Params.SiteDescription }}">
+<title>{{ if .IsHome }}{{ else }}{{ if .Title }}{{ .Title }} | {{ end }}{{ end }}{{ site.Title }} | AI Engineer </title>
+
+{{ if .IsHome }}<meta name="description" content="Its Oriol! This blog is my space to document cool projects, share tips, and maybe even a few AI-generated funnies. ">{{ else }}{{ end }} 
 
 
 {{- /* Meta */}}

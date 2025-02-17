@@ -58,7 +58,7 @@ Transformers [1] emerged as a way to built encoder-decoder architectures to solv
 The **transformer neural network** is composed by an encoder-decoder architecture  much like **RNN**. However, the difference is that the input sequence can be passed **in parallel** by passing also the positional encoder zipped with, as the input might have different meaning depending on its position.
 
 {{< figure
-  src="/posts/2024/transf_arch.png"
+  src="/posts/2024/transf_arch.PNG"
   alt="Transformer model architecture"
   caption="Fig. 3. Transformer model architecture [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
   width="40%"
@@ -117,7 +117,7 @@ for i, ax in enumerate(axs.flat):
 There are several attention mechanisms: additive, content-base, badhanau [2]... Transformers introduced a new mechanisme called **Scaled Dot-Product Attention**. An attention function can operate using **queries (Q)**, **keys (K)** and **values (V)**.
 
 {{< figure
-  src="/posts/2024/scaled-dot-product.png"
+  src="/posts/2024/scaled-dot-product.PNG"
   alt="Scaled Dot-Product Attention"
   caption="Fig. 5. Scaled Dot-Product Attention [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
   width="25%"

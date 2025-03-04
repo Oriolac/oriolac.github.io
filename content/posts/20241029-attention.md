@@ -146,6 +146,14 @@ To give the encoder model more representation power of the self-attention, they 
 The input of each head is first fed into three distinct fully connected layers to create the query, key and value vectors. These transformations allow the network to learn different types of relationships between tokens. The idea is that the attention block must map the query against a set of keys to then present the best attention, which will be embedded to the values. 
 
 
+{{< figure
+  src="/posts/2024/multilinear.png"
+  alt="Multi-Head Attention Layer representation"
+  caption="Fig. 7. Example of Multi-Head Attention Layer mechanism."
+  width="85%"
+  align="center"
+>}}
+
 After computing attention in each head, the results are concatenated and passed through a linear projection layer. This ensures that the output has the same dimensionality as the input, allowing for seamless integration with subsequent layers.
 
 

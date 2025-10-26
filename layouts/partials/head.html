@@ -153,6 +153,12 @@
 {{- /* Misc */}}
 {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
 <!-- Google tag (gtag.js) -->
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-l2kMKIpE2Uxx7KMtMHkwi.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
 
 <div id="cookie-notice" style="display:none; position: fixed; bottom:0; left:0; width:100%; background:#333C; color:#fff; padding:0.3rem; text-align:center; z-index:1000;">
   <span>I use cookies for analytics to improve this site. Do you accept?</span>

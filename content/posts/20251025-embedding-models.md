@@ -47,6 +47,8 @@ This enables **semantic search**: se can take a user query, embed it into a vect
 have embeddings nearest to that's query embedding. This approach goes beyond keyword matching; it can retrieve
 information that uses different wording but conveys the same idea.
 
+![alt text](/posts/2025/timeline.png "Fig. 1. Timeline of embedding models described in this post.")
+
 Embeddings also shine in other tasks like clustering (grouping similar documents), classification (feeding embeddings
 into machine learning models) or anomaly detection. They condense the essential information of text into a numeric form
 that algorithms can easily work with. Additionally, embedding models are not just for text but for image (for example,
@@ -65,8 +67,7 @@ Understanding this taxonomy will clarify the landscape of embedding techniques a
 
 ## Static vs Contextual word embeddings
 
-![alt text](/posts/2025/static_embds.png "Fig. 1. Side-by-side comparison of static (left) and contextual (right) embeddings.")
-
+![alt text](/posts/2025/static_embds.png "Fig. 2. Side-by-side comparison of static (left) and contextual (right) embeddings.")
 
 **Static embeddings** were the early wave of embedding models exemplified by Word2Vec, GloVe, and FastText. These models
 learn one vector per word in a fixed vocabulary by training on large corpora to capture general semantic relationships.
@@ -108,8 +109,9 @@ sentence-level embedding. SBERT uses a siamese network setup and a contrastive l
 nearby vectors. The result is a model that can encode an entire sentence or paragraph into a single vector that is
 excellent for semantic similarity comparisons, clustering, etc.
 
-So, we distinguish word-level vs. sentence-level embedding models. Word-level models (like the original BERT) give
-flexibility: you can derive embeddings for any granularity (subword, word, sentence) but might need task-specific tuning
+So, we distinguish word-level vs. sentence-level embedding models. Word-level models (like the original BERT, although
+currently serves as a Sentence-level model) give flexibility: you can derive embeddings for any granularity (subword,
+word, sentence) but might need task-specific tuning
 to get good sentence representations. Sentence-level models are explicitly optimized to output one vector for a whole
 input text that captures its meaning. In RAG pipelines for QA, we typically need to compare questions and passages.
 Using a sentence-level embedding model (or more generally, a model that produces one vector per query or document) is
@@ -303,7 +305,6 @@ upgrades: they reshape how AI systems understand, search, and generate knowledge
 
 Whether you are building a semantic search engine, a retrieval-enhanced chatbot, or a domain-specific RAG pipeline,
 mastering embedding models means mastering the core bridge between text and meaning.
-
 
 ```
 @article{alas2025,

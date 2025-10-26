@@ -1,5 +1,5 @@
 +++
-title = 'From Words to Vectors: A Deep Dive into Embedding Model Taxonomy'
+title = 'From Words to Vectors: A Dive into Embedding Model Taxonomy'
 date = 2025-02-17T12:31:23+01:00
 draft = false
 tags = ['nlp', 'introduction', 'transformers', 'embedding-models', 'deep-learning']
@@ -308,7 +308,7 @@ mastering embedding models means mastering the core bridge between text and mean
 
 ```
 @article{alas2025,
-  title   = "From Words to Vectors: A Deep Dive into Embedding Model Taxonomy.",
+  title   = "From Words to Vectors: A Dive into Embedding Model Taxonomy.",
   author  = "Alàs Cercós, Oriol",
   journal = "oriolac.github.io",
   year    = "2025",

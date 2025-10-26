@@ -153,14 +153,72 @@
 {{- /* Misc */}}
 {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XFNJ5J7389"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-XFNJ5J7389');
+<div id="cookie-notice" style="display:none; position: fixed; bottom:0; left:0; width:100%; background:#333C; color:#fff; padding:0.3rem; text-align:center; z-index:1000;">
+  <span>I use cookies for analytics to improve this site. Do you accept?</span>
+  <button id="cookie-notice-accept" style="margin-left:1rem; padding:0.5rem 1rem; background:transparent; border:1px solid #fff; color:#fff; cursor:pointer;">Accept</button>
+  <button id="cookie-notice-deny" style="margin-left:0.5rem; padding:0.5rem 1rem; border:none; color:#fff; cursor:pointer;">Decline</button>
+</div>
+
+<script>
+  (function(){
+    function setCookie(name,value,days){
+      var expires="";
+      if(days){
+        var date=new Date();
+        date.setTime(date.getTime()+ (days*24*60*60*1000));
+        expires="; expires="+date.toUTCString();
+      }
+      document.cookie = name+"="+value+expires+"; path=/";
+    }
+
+    function getCookie(name){
+      var nameEQ = name+"=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i<ca.length;i++){
+        var c = ca[i];
+        while(c.charAt(0)==' ') c = c.substring(1,c.length);
+        if(c.indexOf(nameEQ)==0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+    }
+
+    var consent = getCookie('cookie-consent');
+    if(consent === 'accepted'){
+      loadAnalytics();
+    } else if(consent === 'rejected'){
+      // no cargar analytics
+    } else {
+      document.getElementById('cookie-notice').style.display = 'block';
+    }
+
+    document.getElementById('cookie-notice-accept').addEventListener('click',function(){
+      setCookie('cookie-consent','accepted',365);
+      document.getElementById('cookie-notice').style.display='none';
+      loadAnalytics();
+    });
+
+    document.getElementById('cookie-notice-deny').addEventListener('click',function(){
+      setCookie('cookie-consent','rejected',365);
+      document.getElementById('cookie-notice').style.display='none';
+    });
+
+    function loadAnalytics(){
+      // reemplaza G-XXXXXXXX con tu ID
+      var tag = 'G-XFNJ5J7389';
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id="+tag;
+      document.head.appendChild(script);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', tag, { 'anonymize_ip': true });
+    }
+  })();
 </script>
+
 {{- template "_internal/google_analytics.html" . }}
 {{- template "partials/templates/opengraph.html" . }}
 {{- template "partials/templates/twitter_cards.html" . }}

@@ -1,7 +1,7 @@
 +++
 title = 'The Generative Trilemma: A quick overview'
 date = 2025-07-10T12:13:48+01:00
-draft = true
+draft = false
 tags = ['computer-vision', 'deep-learning', 'introduction', 'generative-adversarial-networks', 'auto-encoders', 'variational-auto-encoders', 'denoising-diffusion-models']
 metaDescription = 'In this post we will see that **Generative Adversarial Networks (GAN)** have serious problems with mode collapse, which affects the diversity of synthetic data. While **Denoising Diffusion Model (DDM)** can cover a wide spectrum of possibilities, they suffer from thousands of network evaluations respectively. On the last term, **Variational Auto-Encoders (VAE)** and likelihood-based models are fast samplers but are limited when creating diverse patterns not present in the training data.'
 [cover]

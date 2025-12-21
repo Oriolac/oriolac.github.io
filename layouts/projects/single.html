@@ -1,0 +1,64 @@
+{{/* layouts/projects/single.html */}}
+{{ define "main" }}
+<article class="project-single">
+
+    <header class="project-hero">
+        <div class="project-hero__inner">
+            <div class="project-hero__text">
+                <h1 class="project-hero__title">{{ .Title }}</h1>
+
+                {{ with .Summary }}
+                <p class="project-hero__summary">{{ . }}</p>
+                {{ end }}
+
+                {{ with .Params.tech }}
+                <ul class="project-tech project-tech--hero" aria-label="Technologies">
+                    <p class="project-type">Techs:</p>
+                    {{ range . }}
+                    <li class="tech-pill">{{ . }}</li>
+                    {{ end }}
+                </ul>
+                {{ end }}
+
+                {{ with .Params.tags }}
+                <ul class="project-tech project-tech--hero"  aria-label="Tags">
+                    <p class="project-type">Tags:</p>
+
+                    {{ range . }}
+                    <li class="tag-pill">{{ . }}</li>
+                    {{ end }}
+                </ul>
+                {{ end }}
+
+            </div>
+
+            {{ with .Params.cover.image }}
+            <div class="project-hero__media">
+                <img class="project-cover" src="{{ . }}" alt="{{ $.Title }}" loading="lazy"/>
+            </div>
+            {{ end }}
+        </div>
+    </header>
+
+    <div class="project-content">
+        {{ .Content }}
+    </div>
+
+    {{/* Optional: repeat actions at the bottom for long pages */}}
+    <footer class="project-footer">
+        <div class="project-actions" aria-label="Project links">
+            {{ with .Params.repo }}
+            <a class="btn btn-secondary" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+                Repository
+            </a>
+            {{ end }}
+            {{ with .Params.demo }}
+            <a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+                Live Demo
+            </a>
+            {{ end }}
+        </div>
+    </footer>
+
+</article>
+{{ end }}

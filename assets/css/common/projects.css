@@ -1,0 +1,183 @@
+/* assets/css/projects.css */
+
+/* Grid */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:1.25rem;
+}
+
+/* Outer card */
+.project-card{
+  background:var(--entry);
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 1px 0 rgba(0,0,0,0.04);
+}
+
+/* Inner card (clickable area) */
+.project-main{
+  display:block;
+  border-radius:12px;
+  margin:12px;
+  background:var(--entry);
+  border:1px solid var(--border);
+  text-decoration:none;
+  color:inherit;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+
+.project-main:hover{
+  transform:translateY(-1px);
+  box-shadow:0 8px 24px rgba(0,0,0,0.10);
+  border-color:rgba(127,127,127,0.35);
+}
+
+.project-main:focus-visible{
+  outline:2px solid var(--primary);
+  outline-offset:3px;
+}
+
+/* Image */
+.project-media{
+  width:100%;
+  height:180px;
+  overflow:hidden;
+  background:var(--code-bg);
+}
+
+.project-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* Text */
+.project-content{
+  padding:14px 14px 16px 14px;
+}
+
+.project-title{
+  margin:0 0 8px 0;
+  font-size:1.25rem;
+  line-height:1.2;
+}
+
+.project-summary{
+  margin:0;
+  opacity:.9;
+  line-height:1.45;
+}
+
+/* Footer area inside outer card (not clickable to entry) */
+.project-meta{
+  padding:0 12px 14px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* Tech pills: remove bullets entirely */
+.project-tech{
+  list-style:none;        /* removes bullets */
+  padding:0;              /* removes indent */
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.project-type {
+  font-size: .95rem;
+  font-style: italic;
+}
+
+.tech-pill{
+  list-style:none;        /* defensive */
+  padding:.35rem .55rem;
+  border-radius:10px;
+  background:var(--code-bg);
+  border:1px solid var(--border);
+  font-size:.80rem;
+  line-height:1;
+}
+
+.tag-pill {
+    list-style:none;        /* defensive */
+  padding:.35rem .55rem;
+  border-radius:10px;
+  background: #e3f6f3;
+  border:1px solid var(--border);
+  font-size:.80rem;
+  line-height:1;
+}
+
+/* Buttons */
+.project-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* Base button */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.45rem;
+  padding:.55rem .8rem;
+  border-radius:10px;
+  border:1px solid var(--border);
+  font-weight:600;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, opacity .12s ease;
+  user-select:none;
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 10px 18px rgba(0,0,0,0.10);
+}
+
+.btn:focus-visible{
+  outline:2px solid var(--primary);
+  outline-offset:3px;
+}
+
+.btn:active{
+  transform:translateY(0);
+  box-shadow:none;
+}
+
+/* Variants to make “clickable” obvious */
+.btn-primary{
+  background:var(--primary);
+  color:var(--theme);
+  border-color:rgba(0,0,0,0.06);
+}
+
+.btn-primary:hover{ opacity:.95; }
+
+.btn-secondary{
+  background:transparent;
+  color:var(--primary);
+  border-color:rgba(127,127,127,0.35);
+}
+
+.btn-secondary:hover{
+  border-color:var(--primary);
+}
+
+/* Optional: tighten vertical rhythm on small screens */
+@media (max-width:420px){
+  .project-main{ margin:10px; }
+  .project-media{ height:160px; }
+}
+

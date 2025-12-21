@@ -1,0 +1,58 @@
+{{/* layouts/projects/list.html */}}
+{{ define "main" }}
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}<div class="page-description">{{ . }}</div>{{ end }}
+</header>
+
+<div class="projects-grid">
+  {{ range .Pages.ByDate.Reverse }}
+    <div class="project-card">
+      {{/* INNER CARD: whole area is the link to the single entry */}}
+      <a class="project-main" href="{{ .RelPermalink }}" aria-label="Open project: {{ .Title }}">
+        {{ with .Params.cover.image }}
+          <div class="project-media">
+            <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy" />
+          </div>
+        {{ end }}
+
+        <div class="project-content">
+          <h2 class="project-title">{{ .Title }}</h2>
+          <p class="project-summary">{{ .Summary }}</p>
+        </div>
+      </a>
+
+      {{/* OUTER CARD FOOTER: not part of the main clickable area */}}
+      <div class="project-meta">
+          <ul class="project-tech" aria-label="Technologies">
+
+        {{ with .Params.tech }}
+            {{ range . }}
+              <li class="tech-pill">{{ . }}</li>
+            {{ end }}
+        {{ end }}
+               {{ with .Params.tags }}
+            {{ range . }}
+              <li class="tag-pill">{{ . }}</li>
+            {{ end }}
+        {{ end }}
+          </ul>
+
+
+        <div class="project-actions" aria-label="Project links">
+          {{ with .Params.repo }}
+            <a class="btn btn-secondary" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+              Code
+            </a>
+          {{ end }}
+          {{ with .Params.demo }}
+            <a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+              Demo
+            </a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  {{ end }}
+</div>
+{{ end }}

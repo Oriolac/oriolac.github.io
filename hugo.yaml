@@ -1,7 +1,7 @@
 baseURL: "https://oriolac.github.io/"
 languageCode: en-us
 title: Oriol Alàs Cercós
-theme: ["PaperMod"]
+theme: [ "PaperMod" ]
 copyright: © 2024 Oriol Alàs Cercós
 
 menu:
@@ -14,14 +14,18 @@ menu:
       name: Posts
       url: /
       weight: 1
+    - identifier: projects
+      name: Projects
+      url: /projects/
+      weight: 2
     - identifier: archive
       name: Archive
       url: /archives/
-      weight: 2
+      weight: 3
     - identifier: tags
       name: Tags
       url: /tags/
-      weight: 3
+      weight: 4
     #- identifier: series
     #  name: Series
     #  url: /series/
@@ -29,7 +33,7 @@ menu:
     - identifier: search
       name: Search
       url: /search/
-      weight: 4
+      weight: 5
 
 taxonomies:
   tag: tags
@@ -42,8 +46,12 @@ params:
   description: "Personal blog by Oriol Alàs Cercós, exploring AI, NLP, computer vision, and embeddings through hands-on research notes, practical guides, and reflections from real applied machine-learning work."
   homeInfoParams:
     Title: "Hi there 👋 | Oriol Alàs Cercós"
-    Content: Its Oriol! This blog is my space to document cool projects, share tips and document my notes. 🥦 Stick around to see what I'm up to and maybe learn something new along the way! 🚀
-  keywords: [blog, page]
+    Content: |
+      Hi, I'm Oriol Alàs Cercós, an **AI Engineer and Researcher** 🔬 with a passion for **Machine Learning**, **Computer Vision**, and **Large Language Models** (LLMs).
+      
+      
+      This blog is a personal notebook where I document projects, experiments, and ideas related to artificial intelligence, machine learning, and applied research.
+  keywords: [ blog, page ]
   socialIcons: # optional
     - name: Github
       url: "https://github.com/oriolac/"
@@ -54,20 +62,22 @@ params:
 
   ShowReadingTime: true
   ShowShareButtons: True
-  ShareButtons: ["linkedin", "twitter"]
+  ShareButtons: [ "linkedin", "twitter" ]
   ShowBreadCrumbs: true
   ShowPostNavLinks: true
   ShowCodeCopyButtons: true
   ShowFullTextinRSS: true
   ShowToc: true
   ShowRssButtonInSectionTermList: true
-  SiteDescription: Its Oriol! This blog is my space to document cool projects, share tips, and maybe even a few AI-generated funnies. 🥦 Stick around to see what I'm up to and maybe learn something new along the way! 🚀
+  SiteDescription: Hi, I'm Oriol Alàs Cercós, an AI Engineer and Researcher 🔬 with a passion for Machine Learning, Data Science, and Large Language Models (LLMs). This blog is my space to document cool projects, share tips, and maybe even a few AI-generated funnies. 🥦 Stick around to see what I'm up to and maybe learn something new along the way! 🚀
   math: true
 
   fuseOpts:
     isCaseSensitive: false
   assets:
     favicon: "/icons8-broccoli-stickers-96.png"
+    css:
+      - css/projects.css
 
 markup:
   defaultMarkdownHandler: goldmark
@@ -76,13 +86,13 @@ markup:
       passthrough:
         delimiters:
           block:
-          - - \[
-            - \]
-          - - $$
-            - $$
+            - - \[
+              - \]
+            - - $$
+              - $$
           inline:
-          - - \(
-            - \)
+            - - \(
+              - \)
         enable: true
 
 outputs:

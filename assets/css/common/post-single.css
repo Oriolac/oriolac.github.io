@@ -35,7 +35,7 @@
 .post-content {
     color: var(--content);
     text-align: justify;
-    font-family: Roboto;
+    font-family: Plus Jakarta Sans,sans-serif;
     line-height: calc(1em + 1.3rem);
 }
 
@@ -130,8 +130,13 @@
 .post-content a,
 .toc a:hover {
     box-shadow: 0 1px 0;
+    color: #0c7ab5;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
+}
+
+.post-content a:hover {
+    color: #219ee3;
 }
 
 .post-content a code {

@@ -39,11 +39,11 @@ taxonomies:
 params:
   env: production
   author: "Oriol Alàs Cercós"
+  description: "Personal blog by Oriol Alàs Cercós, exploring AI, NLP, computer vision, and embeddings through hands-on research notes, practical guides, and reflections from real applied machine-learning work."
   homeInfoParams:
-    Title: "Hi there 👋"
-    Content: Its Oriol! This blog is my space to document cool projects, share tips, and maybe even a few AI-generated funnies. 🥦 Stick around to see what I'm up to and maybe learn something new along the way! 🚀
+    Title: "Hi there 👋 | Oriol Alàs Cercós"
+    Content: Its Oriol! This blog is my space to document cool projects, share tips and document my notes. 🥦 Stick around to see what I'm up to and maybe learn something new along the way! 🚀
   keywords: [blog, page]
-  
   socialIcons: # optional
     - name: Github
       url: "https://github.com/oriolac/"

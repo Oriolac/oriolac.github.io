@@ -1,7 +1,7 @@
 ---
 title: "About me"
-draft: true
-toc: true
+draft: false
+toc: false
 date: 2024-03-25T17:51:55+02:00
 ---
 

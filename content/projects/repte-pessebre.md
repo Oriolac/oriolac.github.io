@@ -1,10 +1,9 @@
-    ---
-
+---
 title: "QR Nativity Challenge"
 date: 2024-12-01
 summary: "Gamified QR-based Christmas challenge for local commerce."
-tags: ["gamification", "web"]
-tech: ["Angular", "Django REST API", "Google OAuth", "QR"]
+tags: [ "software", "web" ]
+tech: [ "Angular", "Django REST API", "Google OAuth", "QR" ]
 cover:
   image: "/projects/repte_pessebre.png"
 repo: "https://github.com/Pessebres-del-Segre/repte"
@@ -73,7 +72,7 @@ initiative within their own town.
 ### Results / metrics
 
 - **Local business engagement doubled**: we achieved a **2× increase in the number of local shops interested in
-  promoting the contest** (from the prior baseline of 14 shops to significantly more).
+  promoting the contest** (from the prior baseline of 14 shops to significantly more, 30).
 - **Stronger town-wide visibility**: by embedding the challenge into the Christmas program and shop windows, the contest
   shifted from a “single-event” dynamic to a **distributed, repeatable experience** across the holiday period. :
   contentReference

@@ -69,6 +69,11 @@ params:
   ShowFullTextinRSS: true
   ShowToc: true
   ShowRssButtonInSectionTermList: true
+  publications:
+    - text: "Velasquez-Camacho, L., et al. (2025). **Monitoring temporal changes in large urban street trees using remote sensing and deep learning**. PLOS ONE."
+      link: "https://doi.org/10.1371/journal.pone.0326562"
+    - text: "Alàs, O., & Sebé, F. (2024). **Privacy-Preserving Electricity Trading for Connected Microgrids**. Applied Sciences."
+      link: "https://doi.org/10.3390/app14041458"
   SiteDescription: Hi, I'm Oriol Alàs Cercós, an AI Engineer and Researcher 🔬 with a passion for Machine Learning, Data Science, and Large Language Models (LLMs). This blog is my space to document cool projects, share tips, and maybe even a few AI-generated funnies. 🥦 Stick around to see what I'm up to and maybe learn something new along the way! 🚀
   math: true
 

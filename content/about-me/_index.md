@@ -26,16 +26,16 @@ _Universitat de Lleida_.
 > Velasquez-Camacho, L., van Doorn, N., Preisler, H., Etxegarai, M., Alas, O., Gonzalez Castro, J. M., & de-Miguel, S. (
 > 2025). Monitoring temporal changes in large urban street trees using remote sensing and deep learning. PLOS ONE, 20(
 > 6),
-> e0326562. doi: 10.1371/journal.pone.0326562
+> e0326562. doi: [10.1371/journal.pone.0326562](https://doi.org/10.1371/journal.pone.0326562)
 
 > Alàs, O., & Sebé, F. (2024). Privacy-Preserving Electricity Trading for Connected Microgrids. Applied Sciences, 14(4),
-> 1458. doi: 10.3390/app14041458
+> 1458. doi: [10.3390/app14041458](https://doi.org/10.3390/app14041458)
 
 ### Thesis / academic work
 
 > Alàs Cercós, O. (2023). Generative deep learning based models for cloud removal satellite imagery (Master’s thesis /
-> Treball Final de Màster, Universitat de Lleida – EPS; public defense dated 27 Sep 2023)
+> Treball Final de Màster, Universitat de Lleida – EPS; public defense dated 27 Sep 2023). [Link](https://repositori.udl.cat/handle/10459.1/84107)
 
 > Alàs Cercós, O. (2021). Implementació d'un sistema criptogràfic per l'enviament del consum elèctric en sistemes de
 > comptadors intel·ligents (Treball Final de Grau, Grau en Enginyeria Informàtica, Universitat de Lleida – Escola
-> Politècnica Superior; presented July 2021; supervisor: Francesc Sebé Feixas).
+> Politècnica Superior; presented July 2021; supervisor: Francesc Sebé Feixas). [Link](https://repositori.udl.cat/handle/10459.1/71911)

@@ -1,20 +1,160 @@
 {{- with site.Params.homeInfoParams }}
 <article class="first-entry home-info">
-    <div style="display: flex; flex-direction: row; align-items: center;">
-        <div>
-            <img src="https://pbs.twimg.com/profile_images/1800931919791640576/Nk1Uy2Pb_400x400.jpg" alt="Profile Image" style="border-radius: 50%; width: 100px; height: 100px; object-fit: cover; margin-right: 120px;">
-        </div>
-        <div>
-            <header class="entry-header">
-                <h1>{{ .Title | markdownify }}</h1>
-            </header>
-            <div class="entry-content">
-                {{ .Content | markdownify }}
+    <div class="home-info-container" style="display: flex; flex-direction: column; align-items: flex-start; gap: 20px;">
+        <div class="home-info-profile" style="display: flex; flex-direction: row; align-items: center; gap: 30px;">
+            <div class="home-info-image">
+                <img src="https://pbs.twimg.com/profile_images/1800931919791640576/Nk1Uy2Pb_400x400.jpg" alt="Profile Image" style="border-radius: 50%; width: 120px; height: 120px; object-fit: cover; min-width: 120px;">
             </div>
-            <footer class="entry-footer">
-                {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
-            </footer>
+            <div class="home-info-content">
+                <header class="entry-header">
+                    <h1>{{ .Title | markdownify }}</h1>
+                </header>
+                <div class="entry-content">
+                    {{ .Content | markdownify }}
+                </div>
+                <footer class="entry-footer" style="margin-top: 15px;">
+                    {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
+                </footer>
+            </div>
+        </div>
+
+        <div class="home-info-extended" style="width: 100%;">
+
+            {{- /* Projects Section */ -}}
+            {{- $projects := where site.RegularPages "Section" "projects" }}
+            {{- if $projects }}
+            <div class="home-projects" style="margin-top: 30px;">
+                <button class="toggle-button" onclick="toggleSection('projects-content', 'projects-icon')" style="background: none; border: none; padding: 0; width: 100%; text-align: left; cursor: pointer; color: inherit; font-family: inherit;">
+                    <h2 style="margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 5px; font-size: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+                        <span style="display: flex; align-items: center; gap: 10px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                            Latest Projects
+                        </span>
+                        <svg id="projects-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;"><path d="m6 9 6 6 6-6"/></svg>
+                    </h2>
+                </button>
+                <div id="projects-content" class="toggle-content">
+                    <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        {{- range first 3 $projects }}
+                        <div class="project-card" style="padding: 15px; border: 1px solid var(--border); border-radius: 8px; transition: transform 0.2s ease, box-shadow 0.2s ease; background: var(--entry);">
+                            <a href="{{ .Permalink }}" style="font-weight: 600; display: block; margin-bottom: 8px; color: var(--primary);">{{ .Title }}</a>
+                            {{- with .Params.summary }}
+                            <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 10px; line-height: 1.4;">{{ . }}</p>
+                            {{- end }}
+                            {{- with .Params.tech }}
+                            <div class="project-tech" style="display: flex; flex-wrap: wrap; gap: 5px;">
+                                {{- range first 3 . }}
+                                <span style="font-size: 0.75rem; padding: 2px 6px; background: var(--tertiary); border-radius: 4px;">{{ . }}</span>
+                                {{- end }}
+                            </div>
+                            {{- end }}
+                        </div>
+                        {{- end }}
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <a href="/projects/" class="more-link" style="font-size: 0.9em; text-decoration: none; color: var(--secondary); font-weight: 500;">View all projects →</a>
+                    </div>
+                </div>
+            </div>
+            {{- end }}
+
+            {{- /* Publications Section */ -}}
+            {{- with site.Params.publications }}
+            <div class="home-publications" style="margin-top: 35px;">
+                <button class="toggle-button" onclick="toggleSection('publications-content', 'publications-icon')" style="background: none; border: none; padding: 0; width: 100%; text-align: left; cursor: pointer; color: inherit; font-family: inherit;">
+                    <h2 style="margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 5px; font-size: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+                        <span style="display: flex; align-items: center; gap: 10px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                            Selected Publications
+                        </span>
+                        <svg id="publications-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.3s ease;"><path d="m6 9 6 6 6-6"/></svg>
+                    </h2>
+                </button>
+                <div id="publications-content" class="toggle-content">
+                    <div class="publications-list">
+                        {{- range . }}
+                        <div class="publication-item" style="margin-bottom: 15px; padding-left: 10px; border-left: 3px solid var(--secondary); background: var(--code-bg); padding: 10px 15px; border-radius: 0 4px 4px 0;">
+                            <div style="font-size: 0.95rem; line-height: 1.5;">
+                                {{ .text | markdownify }}
+                            </div>
+                            {{- if .link }}
+                            <div style="margin-top: 5px;">
+                                <a href="{{ .link }}" style="text-decoration: none; font-size: 0.85em; color: var(--secondary); font-weight: 500;">[Read Publication ↗]</a>
+                            </div>
+                            {{- end }}
+                        </div>
+                        {{- end }}
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <a href="/about-me/#publications" class="more-link" style="font-size: 0.9em; text-decoration: none; color: var(--secondary); font-weight: 500;">View all publications →</a>
+                    </div>
+                </div>
+            </div>
+            {{- end }}
         </div>
     </div>
+    <script>
+        function toggleSection(contentId, iconId) {
+            const content = document.getElementById(contentId);
+            const icon = document.getElementById(iconId);
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.display = 'none';
+                icon.style.transform = 'rotate(-90deg)';
+            }
+        }
+    </script>
+    <style>
+        .toggle-content {
+            transition: all 0.3s ease-in-out;
+        }
+        .toggle-button:hover h2 {
+            color: var(--secondary);
+        }
+        .home-info-container {
+            animation: fadeIn 0.6s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-color: var(--secondary) !important;
+        }
+        .publication-item {
+            transition: transform 0.2s ease;
+        }
+        .publication-item:hover {
+            transform: translateX(5px);
+        }
+        .more-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .more-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        .more-link:hover::after {
+            width: 100%;
+        }
+        @media (max-width: 600px) {
+            .home-info-profile {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 15px !important;
+            }
+        }
+    </style>
 </article>
 {{- end -}}

@@ -1,0 +1,103 @@
+{{/* layouts/talks/single.html */}}
+{{ define "main" }}
+<article class="talk-single">
+    <header class="talk-hero">
+        <div class="talk-hero__inner">
+            <div class="talk-hero__text">
+                <h1 class="talk-hero__title">{{ .Title }}</h1>
+
+                <div class="talk-hero__meta">
+                    {{ with .Params.event }}
+                    <div class="meta-item">
+                        <span class="meta-label">Event:</span>
+                        <span class="meta-value">{{ . }}</span>
+                    </div>
+                    {{ end }}
+
+                    {{ with .Params.location }}
+                    <div class="meta-item">
+                        <span class="meta-label">Location:</span>
+                        <span class="meta-value">{{ . }}</span>
+                    </div>
+                    {{ end }}
+
+                    {{ with .Date }}
+                    <div class="meta-item">
+                        <span class="meta-label">Date:</span>
+                        <span class="meta-value">{{ .Format "January 2006" }}</span>
+                    </div>
+                    {{ end }}
+
+                    {{ with .Params.talkType }}
+                    <div class="meta-item">
+                        <span class="meta-label">Type:</span>
+                        <span class="talk-type-badge">{{ . }}</span>
+                    </div>
+                    {{ end }}
+                </div>
+
+                {{ with .Params.tags }}
+                <ul class="talk-tags talk-tags--hero" aria-label="Tags">
+                    <p class="tags-label">Topics:</p>
+                    {{ range . }}
+                    <li class="tag-pill">{{ . }}</li>
+                    {{ end }}
+                </ul>
+                {{ end }}
+            </div>
+        </div>
+    </header>
+
+    {{ with .Params.video }}
+    {{/* Extract YouTube video ID */}}
+    {{ $videoID := "" }}
+    {{ if strings.Contains . "youtube.com/watch?v=" }}
+      {{ $videoID = replaceRE ".*youtube\\.com/watch\\?v=([^&]+).*" "$1" . }}
+    {{ else if strings.Contains . "youtu.be/" }}
+      {{ $videoID = replaceRE ".*youtu\\.be/([^?]+).*" "$1" . }}
+    {{ end }}
+    {{ with $videoID }}
+
+
+    {{ end }}
+    {{ end }}
+
+    {{ with .Params.video }}
+            <div class="talk-hero__video">
+                {{/* Extract YouTube video ID */}}
+                {{ $videoID := "" }}
+                {{ if strings.Contains . "youtube.com/watch?v=" }}
+                  {{ $videoID = replaceRE ".*youtube\\.com/watch\\?v=([^&]+).*" "$1" . }}
+                {{ else if strings.Contains . "youtu.be/" }}
+                  {{ $videoID = replaceRE ".*youtu\\.be/([^?]+).*" "$1" . }}
+                {{ end }}
+                {{ with $videoID }}
+                <div class="video-embed">
+                    <iframe
+                        src="https://www.youtube.com/embed/{{ . }}"
+                        title="{{ $.Title }}"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                {{ end }}
+            </div>
+            {{ end }}
+
+    <div class="post-content">
+        {{ .Content }}
+    </div>
+
+    <footer class="talk-footer">
+        {{ with .Params.video }}
+        <div class="talk-actions" aria-label="Talk links">
+            <a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+                Watch on YouTube
+            </a>
+        </div>
+        {{ end }}
+    </footer>
+
+</article>
+{{ end }}

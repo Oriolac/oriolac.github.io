@@ -1,0 +1,60 @@
+{{/* layouts/talks/list.html */}}
+{{ define "main" }}
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}<div class="page-description">{{ . }}</div>{{ end }}
+</header>
+
+<div class="talks-grid">
+  {{ range .Pages.ByDate.Reverse }}
+    <div class="talk-card">
+      {{/* INNER CARD: whole area is the link to the single entry */}}
+      <a class="talk-main" href="{{ .RelPermalink }}" aria-label="Open talk: {{ .Title }}">
+        {{ with .Params.video }}
+          <div class="talk-media">
+            {{/* Extract YouTube video ID */}}
+            {{ $videoID := "" }}
+            {{ if strings.Contains . "youtube.com/watch?v=" }}
+              {{ $videoID = replaceRE ".*youtube\\.com/watch\\?v=([^&]+).*" "$1" . }}
+            {{ else if strings.Contains . "youtu.be/" }}
+              {{ $videoID = replaceRE ".*youtu\\.be/([^?]+).*" "$1" . }}
+            {{ end }}
+            {{ with $videoID }}
+              <img src="https://img.youtube.com/vi/{{ . }}/maxresdefault.jpg" alt="{{ $.Title }}" loading="lazy" />
+              <div class="play-overlay">
+                <svg width="68" height="48" viewBox="0 0 68 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"/>
+                  <path d="M 45,24 27,14 27,34" fill="#fff"/>
+                </svg>
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+
+        <div class="talk-content">
+          <h2 class="talk-title">{{ .Title }}</h2>
+          <div class="talk-meta-inline">
+            {{ with .Params.event }}<span class="talk-event">{{ . }}</span>{{ end }}
+            {{ with .Params.talkType }}<span class="talk-type-badge">{{ . }}</span>{{ end }}
+          </div>
+          <div class="talk-details">
+            {{ with .Params.location }}<span class="talk-location">📍 {{ . }}</span>{{ end }}
+            {{ with .Date }}<span class="talk-date">📅 {{ .Format "January 2006" }}</span>{{ end }}
+          </div>
+        </div>
+      </a>
+
+      {{/* OUTER CARD FOOTER: tags */}}
+      <div class="talk-footer">
+        {{ with .Params.tags }}
+          <ul class="talk-tags" aria-label="Tags">
+            {{ range . }}
+              <li class="tag-pill">{{ . }}</li>
+            {{ end }}
+          </ul>
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+</div>
+{{ end }}

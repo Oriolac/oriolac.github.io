@@ -1,0 +1,253 @@
+/* assets/css/talks.css */
+
+/* Grid layout for talks listing */
+.talks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Outer card */
+.talk-card {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* Inner card (clickable area) */
+.talk-main {
+  display: block;
+  border-radius: 12px;
+  margin: 12px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+
+.talk-main:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+  border-color: rgba(127, 127, 127, 0.35);
+}
+
+.talk-main:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* Video thumbnail with play overlay */
+.talk-media {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: var(--code-bg);
+  position: relative;
+}
+
+.talk-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.85;
+  transition: opacity .12s ease;
+}
+
+.talk-main:hover .play-overlay {
+  opacity: 1;
+}
+
+/* Talk content */
+.talk-content {
+  padding: 14px 14px 16px 14px;
+}
+
+.talk-title {
+  margin: 0 0 10px 0;
+  font-size: 1.3rem;
+  line-height: 1.3;
+}
+
+.talk-meta-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.talk-event {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 0.95rem;
+}
+
+.talk-type-badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  background: var(--primary);
+  color: var(--theme);
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.talk-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.talk-location,
+.talk-date {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Footer area with tags */
+.talk-footer {
+  padding: 0 12px 14px 12px;
+}
+
+.talk-tags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Single talk page */
+.talk-single {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.talk-hero {
+  margin-bottom: 2rem;
+}
+
+.talk-hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.talk-hero__title {
+  margin: 0 0 1.5rem 0;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.talk-hero__meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.meta-label {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.meta-value {
+  font-size: 1rem;
+}
+
+.talk-tags--hero {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.tags-label {
+  font-size: 0.95rem;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Video embed */
+.talk-hero__video {
+  width: 100%;
+}
+
+.video-embed {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+}
+
+.video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+/* Actions */
+.talk-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .talk-hero__inner {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .talk-hero__title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .talks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .talk-main {
+    margin: 10px;
+  }
+
+  .talk-media {
+    height: 180px;
+  }
+}

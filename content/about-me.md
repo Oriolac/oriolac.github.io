@@ -84,6 +84,22 @@ date: 2024-03-25T17:51:55+02:00
 - [LoBot project](https://github.com/LleidaHack/hackeps-2020-discordbot)
 - [LleidaHack](https://lleidahack.dev)
 
+## Hackathons
+
+I regularly participate in hackathons as a way to explore new ideas and rapidly prototype AI systems.
+
+These projects typically involve building functional prototypes within 24–72 hours.
+
+- **[MediSur](https://devpost.com/software/medisur)**
+- **[Spinning Enjoyers](https://devpost.com/software/spinning-enjoyers)** (Winner bitsxlamarató 2022)
+- **[Sales Prediction RNN](https://devpost.com/software/sales-prediction-using-rnn)** (Winner HackUPC 2022)
+- **[JobCall](https://devpost.com/software/jobcall)** (Winner HackUPC 2021)
+
+Hackathons are where I explore new ideas in AI, rapid prototyping architectures that later evolve into more complete systems.
+
+More projects on **[Devpost](https://devpost.com/oriolalascercos)**.
+
+
 ## You can find me also in...
 
 {{< rawhtml >}}

@@ -39,3 +39,20 @@ _Universitat de Lleida_.
 > Alàs Cercós, O. (2021). Implementació d'un sistema criptogràfic per l'enviament del consum elèctric en sistemes de
 > comptadors intel·ligents (Treball Final de Grau, Grau en Enginyeria Informàtica, Universitat de Lleida – Escola
 > Politècnica Superior; presented July 2021; supervisor: Francesc Sebé Feixas). [Link](https://repositori.udl.cat/handle/10459.1/71911)
+
+
+
+## Hackathons
+
+I participated in hackathons as a way to explore new ideas and rapidly prototype systems.
+
+These projects typically involve building functional prototypes within 24–72 hours.
+
+- **[MediSur](https://devpost.com/software/medisur)**. AI-assisted medical triage and appointment management platform designed to optimize healthcare workflows.
+- **[Spinning Enjoyers](https://devpost.com/software/spinning-enjoyers)** (Winner bitsxlamarató 2022). Wearable health monitoring system that detects potential stroke symptoms using sensor data from a smartwatch.
+- **[Sales Prediction RNN](https://devpost.com/software/sales-prediction-using-rnn)** (Winner HackUPC 2022). Time-series forecasting system that uses recurrent neural networks to predict product sales based on historical demand data.
+- **[JobCall](https://devpost.com/software/jobcall)** (Winner HackUPC 2021). Intelligent job-matching platform based on speed datings that connects candidates with relevant opportunities using data-driven recommendation mechanisms.
+
+Hackathons are where I explore new ideas in AI, rapid prototyping architectures that later evolve into more complete systems.
+
+More projects on **[Devpost](https://devpost.com/oriolalascercos)**.

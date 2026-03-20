@@ -76,6 +76,8 @@ params:
   ShowToc: true
   ShowRssButtonInSectionTermList: true
   publications:
+    - text: "Alàs, O., Cervera, R., & Sanfeliu, R. (2026). **A Scalable Real-Time Multi-Camera Vehicle Tracking System for Urban Environments**. IEEE Access"
+      link: "https://doi.org/10.1109/ACCESS.2026.3675896"
     - text: "Velasquez-Camacho, L., et al. (2025). **Monitoring temporal changes in large urban street trees using remote sensing and deep learning**. PLOS ONE."
       link: "https://doi.org/10.1371/journal.pone.0326562"
     - text: "Alàs, O., & Sebé, F. (2024). **Privacy-Preserving Electricity Trading for Connected Microgrids**. Applied Sciences."

@@ -1,0 +1,60 @@
+{{- /*
+  Expected front matter:
+    recommendations: [ "20260410-loss-functions-activations", "cv-techniques/20240615-cv-techniques", ... ]
+
+  Resolution strategy (best-effort):
+  - First try `site.GetPage "section" "posts" <value>`
+  - Then try matching by `File.BaseFileName`
+  - Then try matching by `RelPermalink` (with/without trailing slash)
+*/ -}}
+
+{{- $page := . -}}
+{{- $recs := $page.Params.recommendations | default (slice) -}}
+{{- if gt (len $recs) 0 -}}
+
+<div class="recommendations-block">
+  <h2 class="recommendations-title">Recommended</h2>
+  <div class="recommendations-list">
+    {{- $postPages := where site.RegularPages "Section" "posts" -}}
+
+    {{- range $rec := $recs -}}
+      {{- $recStr := trim (printf "%v" $rec) " " -}}
+      {{- $recNorm := strings.TrimSuffix (strings.Trim $recStr "/") ".md" -}}
+
+      {{- $resolved := site.GetPage (printf "/posts/%s" $recStr) -}}
+
+      {{- if not $resolved -}}
+        {{- $needleRel := strings.TrimSuffix $recStr "/" -}}
+        {{- range $p := $postPages -}}
+          {{- $pBase := $p.File.BaseFileName -}}
+          {{- $pRelNorm := strings.TrimSuffix $p.RelPermalink "/" -}}
+          {{- if or (eq $pBase $recNorm) (eq $pRelNorm $needleRel) -}}
+            {{- $resolved = $p -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+
+      {{- with $resolved -}}
+        {{- $post := . -}}
+        <a class="recommendation-card" href="{{ .RelPermalink }}" aria-label="Recommended post: {{ .Title }}">
+          {{- with .Params.cover.image -}}
+            <div class="recommendation-cover">
+              <img src="{{ . | absURL }}" alt="{{ $post.Title }}" loading="lazy" decoding="async">
+            </div>
+          {{- end -}}
+          <div class="recommendation-body">
+            <div class="recommendation-title">{{ $post.Title }}</div>
+            <div class="recommendation-meta">
+              {{- with $post.ReadingTime -}}
+                {{- . }} min read
+              {{- end -}}
+            </div>
+          </div>
+        </a>
+      {{- end -}}
+    {{- end -}}
+  </div>
+</div>
+
+{{- end -}}
+

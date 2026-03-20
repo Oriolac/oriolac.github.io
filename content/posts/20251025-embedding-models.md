@@ -4,6 +4,7 @@ date = 2025-10-25T12:31:23+01:00
 draft = false
 tags = ['nlp', 'introduction', 'transformers', 'embedding-models', 'deep-learning']
 metaDescription = 'Embedding models are foundational in modern NLP, turning raw text into numerical vectors that preserve semantic significance. These representations power everything from semantic search to Retrieval-Augmented Generation or Prompt Engineering for LLM Agents. With growing demand for domain-specific applications, understanding which is the best fit for your system is more important than ever.'
+recommendations = ['20241029-attention']
 [cover]
 image = "/posts/2025/miniatura.png"
 +++

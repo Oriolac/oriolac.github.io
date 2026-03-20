@@ -4,6 +4,7 @@ date = 2025-12-21T11:10:23+01:00
 draft = false
 tags = ['project', 'vae', 'auto-encoders', 'variational-auto-encoders', 'synthetic-data', 'tabular-data', 'embedding-models', 'deep-learning']
 metaDescription = ''
+recommendations = ['20250710-starting-diffusion', '20260410-loss-functions-activations']
 [cover]
 image = "/posts/2025/vae_iot/Portada.png"
 +++
@@ -159,7 +160,7 @@ sending in only specific hours. We will see how AE and VAE adapt relationship.
 {{< figure
 src="/posts/2025/vae_iot/og_temp_moisture.png"
 alt="Transformer model architecture"
-caption="Fig. 4. Bivariate structure between temperature and moisture [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 4. Bivariate structure between temperature and moisture ."
 width="75%"
 align="center" >}}
 
@@ -174,7 +175,7 @@ down, or depending on the prevailing weather mass. That explains why the correla
 {{< figure
 src="/posts/2025/vae_iot/og_temp_humidity.png"
 alt="Transformer model architecture"
-caption="Fig. 5. Bivariate structure between temperature and humidity [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 5. Bivariate structure between temperature and humidity."
 width="75%"
 align="center" >}}
 
@@ -304,7 +305,7 @@ the latent vector, which is useful for downstream analysis such as visualization
 {{< figure
 src="/posts/2025/gen_tril/autoencoder.png"
 alt="Transformer model architecture"
-caption="Fig. 6. AutoEncoder architecture [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 6. AutoEncoder architecture ."
 width="90%"
 align="center" >}}
 
@@ -439,7 +440,7 @@ results = train_ae(X_train, X_test, input_dim)
 {{< figure
 src="/posts/2025/vae_iot/ae_loss_2.png"
 alt="AutoEncoder traning and validation losses through epochs"
-caption="Fig. 7. AutoEncoder traning and validation losses through epochs [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 7. AutoEncoder traning and validation losses through epochs ."
 width="90%"
 align="center" >}}
 
@@ -489,7 +490,7 @@ This will help us when creating new data samples.
 {{< figure
 src="/posts/2025/vae_iot/ae_kde_latent_space.png"
 alt="Kernel Density Estimation Plots of the latent space dimensions of the AutoEncoder"
-caption="Fig. 8. Kernel Density Estimation Plots of the latent space dimensions of the AutoEncoder [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 8. Kernel Density Estimation Plots of the latent space dimensions of the AutoEncoder."
 width="100%"
 align="center" >}}
 
@@ -501,7 +502,7 @@ matrix or doing a PCA.
 {{< figure
 src="/posts/2025/vae_iot/ae_corr_latent_space.png"
 alt="Correlation matrix of the latent space dimensions of the AutoEncoder"
-caption="Fig. 9. Correlation matrix of the latent space dimensions of the AutoEncoder [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 9. Correlation matrix of the latent space dimensions of the AutoEncoder."
 width="70%"
 align="center" >}}
 
@@ -559,7 +560,7 @@ With the new synthetic data, we can see their distribution by doing a KDE plot.
 {{< figure
 src="/posts/2025/vae_iot/ae_kde_outputs.png"
 alt="Kernel Density Estimation plots of the synthetic data of AE and real data"
-caption="Fig. 10. Kernel Density Estimation plots of the synthetic data of AE and real data [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 10. Kernel Density Estimation plots of the synthetic data of AE and real data."
 width="90%"
 align="center" >}}
 
@@ -573,7 +574,7 @@ Checking the correlation matrix we do not see any critical changes.
 {{< figure
 src="/posts/2025/vae_iot/ae_corr_comp.png"
 alt="Correlation matrix comparison of the real data and the synthetic data from AutoEncoder"
-caption="Fig. 11. Correlation matrix comparison of the real data and the synthetic data from AutoEncoder [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 11. Correlation matrix comparison of the real data and the synthetic data from AutoEncoder."
 width="100%"
 align="center" >}}
 
@@ -582,7 +583,7 @@ Moreover, we can check the bivariate relationship of the context variables with 
 {{< figure
 src="/posts/2025/vae_iot/ae_scatter_std_auto.png"
 alt="Bivariate structures between humidity, temperature and moisture"
-caption="Fig. 12. Bivariate structures between humidity, temperature and moisture [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 12. Bivariate structures between humidity, temperature and moisture."
 width="90%"
 align="center" >}}
 
@@ -610,7 +611,7 @@ Each input is mapped to a distribution in latent space rather than a point estim
 {{< figure
 src="/posts/2025/gen_tril/vae.png"
 alt="Variational AutoEncoder model architecture"
-caption="Fig. 13. Variational AutoEncoder model architecture [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 13. Variational AutoEncoder model architecture."
 width="90%"
 align="center" >}}
 
@@ -808,7 +809,7 @@ def train_vae(
 {{< figure
 src="/posts/2025/vae_iot/vae_loss.png"
 alt="VAE training and validation losses through epochs"
-caption="Fig. 14. VAE training and validation losses through epochs [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 14. VAE training and validation losses through epochs."
 width="90%"
 align="center" >}}
 
@@ -839,7 +840,7 @@ With the latent space from the **VAE**, we can see the difference of the latent 
 {{< figure
 src="/posts/2025/vae_iot/vae_kde_latent_space.png"
 alt="Kernel Density Estimation plots of the latent dimensions of VAE"
-caption="Fig. 15. Kernel Density Estimation plots of the latent dimensions of VAE [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 15. Kernel Density Estimation plots of the latent dimensions of VAE."
 width="100%"
 align="center" >}}
 
@@ -853,7 +854,7 @@ relationships between latent variables, with remaining correlations likely domin
 {{< figure
 src="/posts/2025/vae_iot/vae_corr_latent_space.png"
 alt="Correlation matrix of the latent dimensions of the VAE"
-caption="Fig. 16. Correlation matrix of the latent dimensions of the VAE [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 16. Correlation matrix of the latent dimensions of the VAE."
 width="90%"
 align="center" >}}
 
@@ -908,7 +909,7 @@ representation but also generate better skewed distributions.
 {{< figure
 src="/posts/2025/vae_iot/vae_kde_outputs.png"
 alt="Kernel Density Estimation comparison between real, AE and VAE data"
-caption="Fig. 17. Kernel Density Estimation comparison between real, AE and VAE data [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 17. Kernel Density Estimation comparison between real, AE and VAE data."
 width="90%"
 align="center" >}}
 
@@ -922,7 +923,7 @@ no significant changes regarding the correlation of variables. We can appreciate
 {{< figure
 src="/posts/2025/vae_iot/all_correlations.png"
 alt="Matrix correlation comparison"
-caption="Fig. 18. Matrix correlation comparison [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 18. Matrix correlation comparison."
 width="100%"
 align="center" >}}
 
@@ -933,7 +934,7 @@ can see that its mean weakness is over-smoothing: the synthetic cloud is more
 {{< figure
 src="/posts/2025/vae_iot/vae_scatter_std_auto.png"
 alt="Bivariate structure of temperature, humidity and moisture from real and VAE synthetic data"
-caption="Fig. 19. Bivariate structure of temperature, humidity and moisture from real and VAE synthetic data [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 19. Bivariate structure of temperature, humidity and moisture from real and VAE synthetic data."
 width="90%"
 align="center" >}}
 
@@ -950,7 +951,7 @@ is not widely spread adding noise to the dataset.
 {{< figure
 src="/posts/2025/vae_iot/all_scatter_stds.png"
 alt="Comparison of bivariate structures of temperature, humidity and moisture depending on the standard deviation (Auto, 0.1, 0.5 and 1 in columns) and model (AE and VAE in rows)"
-caption="Fig. 20. Comparison of bivariate structures of temperature, humidity and moisture depending on the standard deviation (Auto, 0.1, 0.5 and 1 in columns) and model (AE and VAE in rows) [Attention is all you need](https://arxiv.org/pdf/1706.03762)."
+caption="Fig. 20. Comparison of bivariate structures of temperature, humidity and moisture depending on the standard deviation (Auto, 0.1, 0.5 and 1 in columns) and model (AE and VAE in rows)."
 width="90%"
 align="center" >}}
 

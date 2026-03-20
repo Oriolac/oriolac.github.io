@@ -35,11 +35,17 @@
       {{- partial "toc.html" . }}
       {{- end }}
     </aside>
+  <aside class="recommendations-sidebar">
+    {{- partial "recommendations.html" . -}}
+  </aside>
   {{- if .Content }}
   <div class="post-content">
     {{- if not (.Param "disableAnchoredHeadings") }}
     {{- partial "anchored_headings.html" .Content -}}
     {{- else }}{{ .Content }}{{ end }}
+  </div>
+  <div class="recommendations-mobile">
+    {{- partial "recommendations.html" . -}}
   </div>
   {{- end }}
 
@@ -67,6 +73,7 @@
 <script>
   document.addEventListener('scroll', () => {
     const toc = document.querySelector('.toc-container');
+    const rec = document.querySelector('.recommendations-sidebar');
     const scrollY = window.scrollY || document.documentElement.scrollTop;
 
     // Define a maximum scroll effect limit, adjust as needed
@@ -75,7 +82,8 @@
 
     // Calculate the new top position based on scroll, clamping it to a minimum of (initialTop - maxScrollEffect)
     if (window.innerWidth > 1200) {
-    toc.style.top = `${Math.max(initialTop - scrollY * 1, initialTop - maxScrollEffect)}px`;
+    if (toc) toc.style.top = `${Math.max(initialTop - scrollY * 1, initialTop - maxScrollEffect)}px`;
+    if (rec) rec.style.top = `${Math.max(initialTop - scrollY * 1, initialTop - maxScrollEffect)}px`;
     }
 });
 

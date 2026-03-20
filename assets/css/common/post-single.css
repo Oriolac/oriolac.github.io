@@ -468,3 +468,103 @@ img.in-text {
     display: inline;
     margin: auto;
 }
+
+/* Recommendations (right sidebar on desktop, bottom on mobile) */
+.recommendations-sidebar {
+    position: fixed;
+    top: 230px; /* matches toc-container initialTop in layouts/_default/single.html */
+    left: calc(50% + var(--main-width) / 2 + 10px);
+    width: 260px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    padding-left: var(--gap);
+    z-index: 1;
+}
+
+.recommendations-sidebar:empty {
+    display: none;
+}
+
+.recommendations-mobile {
+    display: none;
+}
+
+.recommendations-block {
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: var(--gap);
+}
+
+.recommendations-title {
+    margin: 0 0 14px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+.recommendations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.recommendation-card {
+    display: block;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--entry);
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.1s;
+}
+
+.recommendation-card:active {
+    transform: scale(0.98);
+}
+
+.recommendation-card:hover {
+    border-color: var(--primary);
+}
+
+.recommendation-cover img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+}
+
+.recommendation-body {
+    padding: 12px 12px 14px;
+}
+
+.recommendation-title {
+    color: var(--content);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    min-height: 34px;
+}
+
+.recommendation-meta {
+    margin-top: 8px;
+    color: var(--secondary);
+    font-size: 12px;
+}
+
+@media (max-width: 1200px) {
+    .recommendations-sidebar {
+        display: none;
+    }
+
+    .recommendations-mobile {
+        display: block;
+        margin: var(--content-gap) auto 0;
+        max-width: var(--main-width);
+    }
+}

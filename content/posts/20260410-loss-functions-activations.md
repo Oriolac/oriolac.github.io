@@ -3,7 +3,7 @@ title = 'Loss functions and its final-layer activations'
 date = 2026-03-20T20:10:23+01:00
 draft = false
 tags = ['deep-learning', 'machine-learning']
-metaDescription = ''
+metaDescription = 'Activation functions and loss functions in deep learning. When to use each one? In this post, we will explore how the final-layer activations are dependent on the loss function of our problem and check which classification or regression problem is best suited for each one.'
 recommendations = ['20251210-vae-tabular', '20250710-starting-diffusion']
 [cover]
 image = "/posts/2026/act-loss-functions/portada.png"

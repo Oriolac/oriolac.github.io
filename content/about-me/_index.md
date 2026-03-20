@@ -24,7 +24,7 @@ _Universitat de Lleida_.
 ### Peer-reviewed journal articles
 
 > Alàs, O., Cervera, R., & Sanfeliu, R. (2026). A Scalable Real-Time Multi-Camera Vehicle Tracking System for Urban
-> Environments. IEEE Access. doi: 10.1109/ACCESS.2026.3675896
+> Environments. IEEE Access. doi: [10.1109/ACCESS.2026.3675896](https://doi.org/10.1109/ACCESS.2026.3675896)
 
 > Velasquez-Camacho, L., van Doorn, N., Preisler, H., Etxegarai, M., Alas, O., Gonzalez Castro, J. M., & de-Miguel, S. (
 > 2025). Monitoring temporal changes in large urban street trees using remote sensing and deep learning. PLOS ONE, 20(

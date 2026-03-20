@@ -65,6 +65,8 @@ params:
       url: "https://oriolac.github.io/index.xml"
     - name: Substack
       url: "https://oriolac.substack.com/subscribe"
+    - name: GoogleScholar
+      url: "https://scholar.google.com/citations?user=4-24-20&hl=en"
 
   ShowReadingTime: true
   ShowShareButtons: True

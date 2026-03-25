@@ -4,7 +4,7 @@ date = 2025-02-17T12:31:23+01:00
 draft = false
 tags = ['nlp', 'introduction', 'transformers', 'seq2seq', 'rnn', 'deep-learning']
 metaDescription = 'Explore the power of transformer architectures in solving NLP challenges like translation and text-to-image generation. This comprehensive guide dives into the Seq2Seq paradigm, attention mechanisms, and the step-by-step components of transformers, including multi-head attention and positional encoding.'
-recommendations = ['20251025-embedding-models']
+recommendations = ['20251025-embedding-models', '20260410-loss-functions-activations']
 [cover]
     image = "/posts/2024/att-post.PNG"
 +++

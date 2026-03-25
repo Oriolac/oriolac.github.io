@@ -1,5 +1,5 @@
 +++
-title = 'Loss functions and its final-layer activations'
+title = 'Loss functions and their final-layer activations'
 date = 2026-03-20T20:10:23+01:00
 draft = false
 tags = ['deep-learning', 'machine-learning']
@@ -9,9 +9,10 @@ recommendations = ['20251210-vae-tabular', '20250710-starting-diffusion']
 image = "/posts/2026/act-loss-functions/portada.png"
 +++
 
-When making the first steps with deep learning, we catch the idea of using a neural network to learn a function that
-maps data to another data. We are often told that neural networks are a powerful tool in machine learning because of its
-non-linearity and the ability to learn complex functions from data, which results minizing some loss function. In this
+When making the first steps with deep learning, we grasp the idea of using a neural network to learn a function that
+maps data to other data. We are often told that neural networks are a powerful tool in machine learning because of their
+non-linearity and their ability to learn complex functions from data, which results in minizing some loss function. In
+this
 post, we will explore how the final-layer activations are dependent on the loss function of our problem.
 
 ## Activation functions
@@ -20,7 +21,7 @@ The activation function is a function that maps the output of a layer to another
 introduce non-linearity into the network, allowing it to learn more complex relationships between inputs and outputs.
 They are typically applied element-wise to the output of a layer before passing it to the next layer.
 
-> In this post, we will focus on the most common activation functions used in deep learning, for sure there are many
+> In this post, we will focus on the most common activation functions used in deep learning. Of course, there are many
 > others! I encourage you to explore them and find the one that best suits your problem.
 
 ### 1. ReLU function
@@ -44,17 +45,17 @@ align="center" >}}
 
 > There are a lot of variants of the ReLU function, such as Leaky ReLU, Parametric ReLU, and Exponential Linear Unit (
 > ELU)
-> used for GANs, smoothier loss landscapes and faster model performance respectively.
+> used for GANs, smoother loss landscapes and faster model performance respectively.
 
 ### 2. Sigmoid function
 
 The sigmoid function is a smooth, continuous function that maps real-valued inputs to the range \([0, 1]\). That means
-that the output of the sigmoid function is always between 0 and 1. Large negative numbers will become near to 0, while
-large positive numbers will become near to 1.
+that the output of the sigmoid function is always between 0 and 1. Large negative numbers will become close to 0, while
+large positive numbers will become close to 1.
 
 \[ \sigma(x) = \frac{1}{1 + e^{-x}} \]
 
-As its range is between 0 and 1, it is ideal for predicting probabilites of an event.
+As its range is between 0 and 1, it is ideal for predicting probabilities of an event.
 
 > We can understand a classification as a prediction of a probability, but putting a threshold to decide if the
 > prediction is positive or negative.
@@ -78,12 +79,12 @@ align="center" >}}
 
 We can see that the gradients of the sigmoid function are really small when \(x \in [-inf, -3] \cup [3, +inf]\). This
 means that when the input of the neurons are relatively high, the gradients are tiny and the neurons are not able
-to learn. That is why this activation function is only suitable for final layers.
+to learn. That is why this activation function is mainly suitable for final layers.
 
 ### 3. Tanh function
 
 The tanh function is really similar to the sigmoid function, but its output has a range of \([-1, -1]\). Hence, tanh
-outputs are zero-centered, which leads to better convergence rather than sigmoid.
+outputs are zero-centered, which leads to better convergence compared to sigmoid.
 
 \[ \tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}} \]
 
@@ -96,8 +97,7 @@ align="center" >}}
 
 The derivatives of the tanh are larger than the derivatives of the sigmoid which help us minimize the cost function
 faster in values near \([-3, 3]\). However, like sigmoid, the gradient values become close to zero for wide range of
-values. Thus, the network
-refuses to learn or keeps learning at a very small rate.
+values. Thus, the network either stops learning or learns at a very slow rate.
 
 \[ \frac{\partial \tanh(x)}{\partial x} = 1 - \tanh^2(x) \]
 
@@ -133,25 +133,25 @@ make the network understand how far or near it is from the desired output, we ne
 Therefore, loss functions are used to measure the distance between the output of the network and the desired output and
 the function to optimize.
 
-> In this post, we will focus on the most common loss functions used in deep learning, for sure there are many others!
+> In this post, we will focus on the most common loss functions used in deep learning. Of course, there are many others!
 > In fact, there are many different loss functions for different types of problems. In physics simulations, physic
 > formulas are used to define loss functions.
 
 ### 1. Mean-squared error (MSE) or L2 loss
 
 Mean-squared error (MSE) or L2 loss is a loss function that measures the average squared difference between the
-predicted
-values and the actual values. It is commonly used for **regression problems** where the goal is to predict a continuous
+predicted values and the actual values. It is commonly used for **regression problems**, where the goal is to predict a
+continuous
 value. The formula for MSE is:
 
 \[ \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 \]
 
 When the expected output of the network is between a range of values, for example, \(y \in [0, 1]\), the MSE loss
 function can work well with final-activation layers such as sigmoid or tanh. If, for example, the expected output is
-between \([0, 1000]\), the only needed thing is to multiply the last neuron by 1000. However, when the expected output
+between \([0, 1000]\), we can simply scale the output accordignly, multiplying the last neuron output by 1000. However, when the expected output
 range is not clear or we have terrible problems with the vanishing gradient problem, we can consider using ReLU instead.
 
-One of the problems of MSE is thet is not robust to outliers in the data and penalizes high and low predictions
+One of the problems of MSE is that it is not robust to outliers in the data and penalizes high and low predictions
 quadratically.
 
 ### 2. Mean-absolute error (MAE) or L1 loss
@@ -181,7 +181,7 @@ predicted class. The formula for BCE loss is:
 where \(y\) is the actual class and \(\hat{y}\) is the predicted class.
 
 BCELoss only requires one output layer (one neuron) to classify the data into two classes. The range of this neuron is
-between 0 and 1. Hence, the best should use the sigmoid function. As a con, the BCE Loss can only be used for binary
+between 0 and 1. Therefore, the appropiate activation function is sigmoid. As a con, the BCE Loss can only be used for binary
 classification.
 
 ### 4. Categorical cross-entropy loss

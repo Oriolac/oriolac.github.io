@@ -4,7 +4,7 @@ date = 2026-03-20T20:10:23+01:00
 draft = false
 tags = ['deep-learning', 'machine-learning']
 metaDescription = 'Activation functions and loss functions in deep learning. When to use each one? In this post, we will explore how the final-layer activations are dependent on the loss function of our problem and check which classification or regression problem is best suited for each one.'
-recommendations = ['20251210-vae-tabular', '20250710-starting-diffusion']
+recommendations = ['20251210-vae-tabular', '20250710-starting-diffusion', '20241029-attention']
 [cover]
 image = "/posts/2026/act-loss-functions/portada.png"
 +++
@@ -12,8 +12,16 @@ image = "/posts/2026/act-loss-functions/portada.png"
 When making the first steps with deep learning, we grasp the idea of using a neural network to learn a function that
 maps data to other data. We are often told that neural networks are a powerful tool in machine learning because of their
 non-linearity and their ability to learn complex functions from data, which results in minizing some loss function. In
-this
-post, we will explore how the final-layer activations are dependent on the loss function of our problem.
+this post, we will explore how the final-layer activations are dependent on the loss function of our problem.
+
+Before diving into each loss function, here is a quick reference of which
+activation and loss function to use depending on your classification case:
+
+{{< figure src="/posts/2026/act-loss-functions/classification_table.png"
+    alt="Classification cases with their corresponding activation and loss functions"
+    caption="Fig. 1. Recommended activation and loss function per classification case."
+    align="center" >}}
+
 
 ## Activation functions
 
@@ -38,7 +46,7 @@ learned and is able to allow learning through all the hidden layers.
 {{< figure
 src="/posts/2026/act-loss-functions/relu.png"
 alt="ReLU function"
-caption="Fig. 1. ReLU function."
+caption="Fig. 2. ReLU function."
 width="60%"
 align="center" >}}
 
@@ -63,7 +71,7 @@ As its range is between 0 and 1, it is ideal for predicting probabilities of an 
 {{< figure
 src="/posts/2026/act-loss-functions/sigmoid.png"
 alt="Sigmoid function"
-caption="Fig. 2. Sigmoid function."
+caption="Fig. 3. Sigmoid function."
 width="60%"
 align="center" >}}
 
@@ -73,7 +81,7 @@ However, let's take a look at its derivative:
 {{< figure
 src="/posts/2026/act-loss-functions/der_sigmoid.png"
 alt="Derivative of Sigmoid function"
-caption="Fig. 3. Derivative of Sigmoid function. We can see the value of the derivative of the sigmoid evaluated at x."
+caption="Fig. 4. Derivative of Sigmoid function. We can see the value of the derivative of the sigmoid evaluated at x."
 width="60%"
 align="center" >}}
 
@@ -91,7 +99,7 @@ outputs are zero-centered, which leads to better convergence compared to sigmoid
 {{< figure
 src="/posts/2026/act-loss-functions/tanh.png"
 alt="Tanh function"
-caption="Fig. 3. Derivative of Tanh function."
+caption="Fig. 5. Derivative of Tanh function."
 width="60%"
 align="center" >}}
 
@@ -104,7 +112,7 @@ values. Thus, the network either stops learning or learns at a very slow rate.
 {{< figure
 src="/posts/2026/act-loss-functions/der_tanh.png"
 alt="Derivative of Tanh function"
-caption="Fig. 3. Derivative of Tanh function. We can see the value of the derivative of the tanh evaluated at x."
+caption="Fig. 6. Derivative of Tanh function. We can see the value of the derivative of the tanh evaluated at x."
 width="60%"
 align="center" >}}
 

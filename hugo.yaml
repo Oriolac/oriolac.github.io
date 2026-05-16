@@ -38,6 +38,10 @@ menu:
       name: Search
       url: /search/
       weight: 6
+    - identifier: contact
+      name: Contact
+      url: /contact/
+      weight: 7
 
 taxonomies:
   tag: tags

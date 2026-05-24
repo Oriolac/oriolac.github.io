@@ -1,0 +1,116 @@
+/* Callout blocks — info, curiosity, see-also */
+
+.callout {
+    display: flex;
+    gap: 14px;
+    margin: 1.5rem 0;
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--callout-border);
+    background: var(--callout-bg);
+    color: var(--callout-fg);
+    line-height: 1.6;
+}
+
+.callout-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--callout-icon-color);
+}
+
+.callout-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.callout-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--callout-title-color);
+    margin: 0 0 6px 0;
+}
+
+.callout-content {
+    font-size: 15px;
+    color: var(--callout-fg);
+}
+
+.callout-content p:first-child { margin-top: 0; }
+.callout-content p:last-child  { margin-bottom: 0; }
+
+/* Override .post-content a styles inside callouts */
+.post-content .callout a {
+    box-shadow: none;
+    color: var(--callout-link);
+}
+.post-content .callout a:hover {
+    color: var(--callout-link);
+    text-decoration: underline;
+}
+
+/* ── Info (blue) ──────────────────────────────────── */
+.callout-info {
+    --callout-bg:           #eff6ff;
+    --callout-border:       #bfdbfe;
+    --callout-fg:           #1e3a5f;
+    --callout-icon-color:   #3b82f6;
+    --callout-title-color:  #1d4ed8;
+    --callout-link:         #1d4ed8;
+}
+.dark .callout-info {
+    --callout-bg:           rgba(59, 130, 246, 0.09);
+    --callout-border:       rgba(59, 130, 246, 0.35);
+    --callout-fg:           #bfdbfe;
+    --callout-icon-color:   #60a5fa;
+    --callout-title-color:  #93c5fd;
+    --callout-link:         #93c5fd;
+}
+
+/* ── Curiosity (amber) ────────────────────────────── */
+.callout-curiosity {
+    --callout-bg:           #fffbeb;
+    --callout-border:       #fde68a;
+    --callout-fg:           #451a03;
+    --callout-icon-color:   #f59e0b;
+    --callout-title-color:  #b45309;
+    --callout-link:         #b45309;
+}
+.dark .callout-curiosity {
+    --callout-bg:           rgba(245, 158, 11, 0.09);
+    --callout-border:       rgba(245, 158, 11, 0.35);
+    --callout-fg:           #fde68a;
+    --callout-icon-color:   #fbbf24;
+    --callout-title-color:  #fcd34d;
+    --callout-link:         #fcd34d;
+}
+
+/* ── See also (teal) ──────────────────────────────── */
+.callout-seealso {
+    --callout-bg:           #f0fdf4;
+    --callout-border:       #bbf7d0;
+    --callout-fg:           #14532d;
+    --callout-icon-color:   #10b981;
+    --callout-title-color:  #059669;
+    --callout-link:         #059669;
+}
+.dark .callout-seealso {
+    --callout-bg:           rgba(16, 185, 129, 0.09);
+    --callout-border:       rgba(16, 185, 129, 0.35);
+    --callout-fg:           #bbf7d0;
+    --callout-icon-color:   #34d399;
+    --callout-title-color:  #6ee7b7;
+    --callout-link:         #6ee7b7;
+}
+
+.callout-seealso-link {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--callout-link);
+    text-decoration: none;
+}
+.callout-seealso-link:hover {
+    text-decoration: underline;
+}

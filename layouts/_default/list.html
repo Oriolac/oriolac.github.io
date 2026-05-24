@@ -93,6 +93,13 @@
     {{- partial "post_meta.html" . -}}
   </footer>
   {{- end }}
+  {{- with .Params.tags }}
+  <div class="entry-tags">
+    {{- range . }}
+    <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="entry-tag">{{ . }}</a>
+    {{- end }}
+  </div>
+  {{- end }}
   <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
 </article>
 {{- end }}

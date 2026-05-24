@@ -568,3 +568,95 @@ img.in-text {
         max-width: var(--main-width);
     }
 }
+
+/* Download buttons */
+.post-download {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 34px;
+    padding: 0 14px;
+    border-radius: var(--radius);
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    color: var(--secondary);
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.download-btn:hover:not(:disabled) {
+    background: var(--primary);
+    color: var(--theme);
+    border-color: var(--primary);
+}
+
+.download-btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* Print / PDF output */
+@media print {
+    header.header,
+    footer.footer,
+    #cookie-notice,
+    .toc-container,
+    .recommendations-sidebar,
+    .recommendations-mobile,
+    .post-download,
+    .post-tags,
+    .paginav,
+    .share-buttons,
+    .top-link,
+    nav {
+        display: none !important;
+    }
+
+    body,
+    .post-single,
+    .post-content {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        color: black !important;
+        background: white !important;
+        font-size: 12pt;
+        text-align: left !important;
+    }
+
+    .post-title { font-size: 24pt; }
+    h2 { font-size: 18pt; }
+    h3 { font-size: 14pt; }
+
+    pre {
+        border: 1px solid #ccc;
+        background: #f8f8f8 !important;
+        color: black !important;
+        font-size: 9pt;
+        white-space: pre-wrap;
+        page-break-inside: avoid;
+    }
+
+    pre code { color: black !important; background: none !important; }
+
+    h2, h3, h4 { page-break-after: avoid; }
+    blockquote, pre { page-break-inside: avoid; }
+
+    a { color: black !important; text-decoration: underline; }
+
+    .post-content a::after {
+        content: " (" attr(href) ")";
+        font-size: .8em;
+        color: #555;
+    }
+}

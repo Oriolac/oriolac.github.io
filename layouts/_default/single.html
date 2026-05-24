@@ -50,6 +50,9 @@
   {{- end }}
 
   <footer class="post-footer">
+    {{- if eq .Section "posts" }}
+    {{- partial "download-post.html" . }}
+    {{- end }}
     {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
     <div class="post-meta">Tags:</div>
     <ul class="post-tags">

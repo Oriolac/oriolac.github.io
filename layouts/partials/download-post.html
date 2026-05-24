@@ -123,7 +123,8 @@ table{border-collapse:collapse;width:100%}
 th,td{border:1px solid #ddd;padding:.4em .6em;text-align:left}
 th{background:#f0f0f0}`);
 
-      const blob = await zip.generateAsync({ type: 'blob' });
+      const bytes = await zip.generateAsync({ type: 'uint8array' });
+      const blob = new Blob([bytes], { type: 'application/epub+zip' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

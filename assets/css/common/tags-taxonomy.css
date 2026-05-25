@@ -1,0 +1,70 @@
+.tags-sort-controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.tags-sort-btn {
+    padding: 6px 18px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--entry);
+    color: var(--secondary);
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.tags-sort-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.tags-sort-btn.active {
+    background: var(--primary);
+    color: var(--theme);
+    border-color: var(--primary);
+}
+
+.tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tags-cloud-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: border-color 0.15s, transform 0.1s;
+}
+
+.tags-cloud-item:active {
+    transform: scale(0.96);
+}
+
+.tags-cloud-item:hover {
+    border-color: var(--primary);
+}
+
+.tags-cloud-name {
+    color: var(--primary);
+    font-size: 15px;
+}
+
+.tags-cloud-count {
+    font-size: 12px;
+    color: var(--theme);
+    background: var(--primary);
+    padding: 1px 7px;
+    border-radius: 10px;
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+}

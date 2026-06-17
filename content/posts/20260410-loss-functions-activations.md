@@ -12,7 +12,7 @@ image = "/posts/2026/act-loss-functions/portada.png"
 When making the first steps with deep learning, we grasp the idea of using a neural network to learn a function that
 maps data to other data. We are often told that neural networks are a powerful tool in machine learning because of their
 non-linearity and their ability to learn complex functions from data, which results in minizing some loss function. In
-this post, we will explore how the final-layer activations are dependent on the loss function of our problem.
+this post, we will explSore how the final-layer activations are dependent on the loss function of our problem.
 
 Before diving into each loss function, here is a quick reference of which
 activation and loss function to use depending on your classification case:

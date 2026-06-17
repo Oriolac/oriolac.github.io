@@ -14,6 +14,7 @@ The post of today is going to be a bit different. We have already talked about *
 implement it from scratch, train it on a dataset and see how it behaves with **tabular data**. Yes, VAEs can be used for
 tabular data as well. To do so, we will use the **CRISP-DM framework** to guide us through the process.
 
+
 # Business Understanding
 
 The dataset used in this project is obtained from
@@ -618,7 +619,11 @@ align="center" >}}
 The architecture closely follows that of the AutoEncoder, with a critical modification in the **encoder head**. The
 encoder
 does not output a latent vector directly. Instead, it predicts the parameters of a Gaussian distribution.
-Check [this post](http://oriolac.github.io/posts/20250710-starting-diffusion/) where I explain some generative models.
+
+{{< callout-seealso url="/posts/20250710-starting-diffusion/" >}}
+The Generative Trilemma: A quick overview
+{{< /callout-seealso >}}
+
 
 The transition from an AutoEncoder to a Variational AutoEncoder is motivated by data generation quality and robustness:
 
@@ -684,6 +689,11 @@ Here we can see the `reparameterize` function that samples the point given the d
 formulation introduces controlled stochasticity while maintaining end-to-end differentiability.
 
 The training loop for the VAE closely mirrors that of the AutoEncoder by adding the KL divergence loss.
+
+{{< callout-seealso url="/posts/20260410-loss-functions-activations/" >}}
+Loss functions and their final-layer activations
+{{< /callout-seealso >}}
+
 
 ```python
 

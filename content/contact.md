@@ -6,11 +6,8 @@ ShowBreadCrumbs: false
 ShowToc: false
 ---
 
-I'd love to hear from you — whether it's about a post, a project collaboration, a research question, or just to say hi.
-
-## Email
-
-The best way to reach me is by email:
+Whether it's about a post, a project collaboration, a research question, or just to say hi; the best way to reach me is
+by email:
 
 **[oriolalascercos@gmail.com](mailto:oriolalascercos@gmail.com)**
 

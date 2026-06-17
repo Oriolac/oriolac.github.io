@@ -60,11 +60,11 @@
 
 .tags-cloud-count {
     font-size: 12px;
-    color: var(--theme);
-    background: var(--primary);
+    color: var(--primary);
     padding: 1px 7px;
-    border-radius: 10px;
+    border-radius: 20px;
     font-weight: 600;
     min-width: 20px;
     text-align: center;
+    border: 1.5px solid var(--tertiary);
 }

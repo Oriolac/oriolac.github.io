@@ -22,9 +22,8 @@
 }
 
 .tags-sort-btn.active {
-    background: var(--primary);
+    background: var(--tertiary-darker);
     color: var(--theme);
-    border-color: var(--primary);
 }
 
 .tags-cloud {
@@ -67,4 +66,10 @@
     min-width: 20px;
     text-align: center;
     border: 1.5px solid var(--tertiary);
+}
+
+.tags-cloud-item:hover .tags-cloud-count {
+    background: var(--tertiary-darker);
+    color: var(--code-bg);
+    border-color: var(--tertiary-darker);
 }

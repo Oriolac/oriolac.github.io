@@ -1,0 +1,12 @@
+{{- $mode := site.Params.analytics.mode | default "dual" -}}
+
+{{- partial "analytics/event-tracker.html" . }}
+
+{{- if or (eq $mode "dual") (eq $mode "plausible-only") }}
+{{- partial "analytics/plausible.html" . }}
+{{- end }}
+
+{{- if or (eq $mode "dual") (eq $mode "ga-only") }}
+{{- partial "analytics/cookie-consent.html" . }}
+{{- partial "analytics/google-analytics.html" . }}
+{{- end }}

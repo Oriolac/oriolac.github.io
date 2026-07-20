@@ -49,35 +49,35 @@
     </header>
 
     {{ with .Params.video }}
-    {{/* Extract YouTube video ID */}}
-    {{ $videoID := "" }}
-    {{ if strings.Contains . "youtube.com/watch?v=" }}
-      {{ $videoID = replaceRE ".*youtube\\.com/watch\\?v=([^&]+).*" "$1" . }}
-    {{ else if strings.Contains . "youtu.be/" }}
-      {{ $videoID = replaceRE ".*youtu\\.be/([^?]+).*" "$1" . }}
-    {{ end }}
-    {{ with $videoID }}
-
-
-    {{ end }}
-    {{ end }}
-
-    {{ with .Params.video }}
             <div class="talk-hero__video">
-                {{/* Extract YouTube video ID */}}
-                {{ $videoID := "" }}
+                {{/* Extract video ID */}}
+                {{ $youtubeID := "" }}
+                {{ $vimeoID := "" }}
                 {{ if strings.Contains . "youtube.com/watch?v=" }}
-                  {{ $videoID = replaceRE ".*youtube\\.com/watch\\?v=([^&]+).*" "$1" . }}
+                  {{ $youtubeID = replaceRE ".*youtube\\.com/watch\\?v=([^&]+).*" "$1" . }}
                 {{ else if strings.Contains . "youtu.be/" }}
-                  {{ $videoID = replaceRE ".*youtu\\.be/([^?]+).*" "$1" . }}
+                  {{ $youtubeID = replaceRE ".*youtu\\.be/([^?]+).*" "$1" . }}
+                {{ else if strings.Contains . "vimeo.com/" }}
+                  {{ $vimeoID = replaceRE ".*vimeo\\.com/([0-9]+).*" "$1" . }}
                 {{ end }}
-                {{ with $videoID }}
+
+                {{ if $youtubeID }}
                 <div class="video-embed">
                     <iframe
-                        src="https://www.youtube.com/embed/{{ . }}"
+                        src="https://www.youtube.com/embed/{{ $youtubeID }}"
                         title="{{ $.Title }}"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                {{ else if $vimeoID }}
+                <div class="video-embed">
+                    <iframe
+                        src="https://player.vimeo.com/video/{{ $vimeoID }}"
+                        title="{{ $.Title }}"
+                        frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture"
                         allowfullscreen>
                     </iframe>
                 </div>
@@ -93,7 +93,13 @@
         {{ with .Params.video }}
         <div class="talk-actions" aria-label="Talk links">
             <a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener noreferrer">
-                Watch on YouTube
+                {{ if strings.Contains . "vimeo.com" }}
+                  Watch on Vimeo
+                {{ else if (or (strings.Contains . "youtube.com") (strings.Contains . "youtu.be")) }}
+                  Watch on YouTube
+                {{ else }}
+                  Watch Video
+                {{ end }}
             </a>
         </div>
         {{ end }}

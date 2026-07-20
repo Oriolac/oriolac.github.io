@@ -1,0 +1,13 @@
+<script>
+window.trackEvent = function(name, category, label) {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', name, {
+      event_category: category || 'engagement',
+      event_label: label || ''
+    });
+  }
+  if (typeof window.plausible === 'function') {
+    window.plausible(name, { props: { label: label || '' } });
+  }
+};
+</script>

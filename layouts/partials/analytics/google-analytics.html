@@ -1,0 +1,65 @@
+{{- $ga := site.Params.analytics.ga -}}
+{{- $consent := site.Params.analytics.consent -}}
+{{- if $ga.enabled }}
+<script>
+(function(){
+  var COOKIE_NAME = '{{ $consent.cookieName }}';
+  var COOKIE_DAYS = {{ $consent.expirationDays }};
+  var GA_ID = '{{ $ga.measurementId }}';
+
+  function setCookie(name, value, days) {
+    var expires = '';
+    if (days) {
+      var d = new Date();
+      d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = '; expires=' + d.toUTCString();
+    }
+    document.cookie = name + '=' + value + expires + '; path=/';
+  }
+
+  function getCookie(name) {
+    var nameEQ = name + '=';
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) === ' ') c = c.substring(1);
+      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
+    }
+    return null;
+  }
+
+  function loadAnalytics() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function() { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID{{ if $ga.anonymizeIp }}, { 'anonymize_ip': true }{{ end }});
+  }
+
+  var notice = document.getElementById('cookie-notice');
+  var consent = getCookie(COOKIE_NAME);
+
+  if (consent === 'accepted') {
+    loadAnalytics();
+  } else if (consent !== 'rejected' && notice) {
+    notice.style.display = 'flex';
+  }
+
+  var acceptBtn = document.getElementById('cookie-notice-accept');
+  if (acceptBtn) acceptBtn.addEventListener('click', function() {
+    setCookie(COOKIE_NAME, 'accepted', COOKIE_DAYS);
+    if (notice) notice.style.display = 'none';
+    loadAnalytics();
+  });
+
+  var denyBtn = document.getElementById('cookie-notice-deny');
+  if (denyBtn) denyBtn.addEventListener('click', function() {
+    setCookie(COOKIE_NAME, 'rejected', COOKIE_DAYS);
+    if (notice) notice.style.display = 'none';
+  });
+})();
+</script>
+{{- end }}

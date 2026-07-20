@@ -33,7 +33,7 @@
 
 <div class="tags-cloud" id="tags-cloud">
   {{- range .Data.Terms.ByCount }}
-  <a href="{{ .Page.Permalink }}" class="tags-cloud-item" data-count="{{ .Count }}" data-name="{{ .Term | lower }}">
+  <a href="{{ .Page.Permalink }}" class="tags-cloud-item" data-count="{{ .Count }}" data-name="{{ .Term | lower }}" onclick="if(window.trackEvent) window.trackEvent('tag_filter','navigation','{{ .Term | htmlEscape }}');">
     <span class="tags-cloud-name">{{ .Term }}</span>
     <span class="tags-cloud-count">{{ .Count }}</span>
   </a>

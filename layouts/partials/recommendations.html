@@ -36,7 +36,7 @@
 
       {{- with $resolved -}}
         {{- $post := . -}}
-        <a class="recommendation-card" href="{{ .RelPermalink }}" aria-label="Recommended post: {{ .Title }}">
+        <a class="recommendation-card" href="{{ .RelPermalink }}" aria-label="Recommended post: {{ .Title }}" onclick="if(window.trackEvent) window.trackEvent('recommendation_click','engagement','{{ $post.Title | htmlEscape }}');">
           {{- with .Params.cover.image -}}
             <div class="recommendation-cover">
               <img src="{{ . | absURL }}" alt="{{ $post.Title }}" loading="lazy" decoding="async">

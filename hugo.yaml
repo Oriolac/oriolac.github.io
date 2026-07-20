@@ -91,6 +91,20 @@ params:
   SiteDescription: Hi, I'm Oriol Alàs Cercós, an AI Engineer and Researcher 🔬 with a passion for Machine Learning, Data Science, and Large Language Models (LLMs). This blog is my space to document cool projects, share tips, and maybe even a few AI-generated funnies. 🥦 Stick around to see what I'm up to and maybe learn something new along the way! 🚀
   math: true
 
+  analytics:
+    mode: "dual"
+    ga:
+      enabled: true
+      measurementId: "G-XFNJ5J7389"
+      anonymizeIp: true
+    plausible:
+      enabled: true
+      domain: "pa-l2kMKIpE2Uxx7KMtMHkwi"
+    consent:
+      enabled: true
+      cookieName: "cookie-consent"
+      expirationDays: 365
+
   fuseOpts:
     isCaseSensitive: false
   assets:

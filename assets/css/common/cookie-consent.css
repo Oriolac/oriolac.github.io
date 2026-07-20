@@ -1,0 +1,74 @@
+.cookie-notice {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(30, 30, 33, 0.95);
+    color: #fff;
+    padding: 0.6rem 1rem;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.cookie-notice-text {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+.cookie-notice-link {
+    color: #ccc;
+    text-decoration: underline;
+}
+
+.cookie-notice-link:hover {
+    color: #fff;
+}
+
+.cookie-notice-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.cookie-notice-btn {
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.cookie-notice-btn--accept {
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.cookie-notice-btn--accept:hover,
+.cookie-notice-btn--accept:focus {
+    background: rgba(255, 255, 255, 0.15);
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.cookie-notice-btn--deny {
+    background: transparent;
+    border: none;
+    color: #aaa;
+}
+
+.cookie-notice-btn--deny:hover,
+.cookie-notice-btn--deny:focus {
+    color: #fff;
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}

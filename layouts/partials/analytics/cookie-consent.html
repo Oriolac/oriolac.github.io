@@ -1,0 +1,12 @@
+{{- if site.Params.analytics.consent.enabled }}
+<div id="cookie-notice" class="cookie-notice" role="dialog" aria-label="Cookie consent" aria-live="polite">
+  <span class="cookie-notice-text">
+    I use <strong>Google Analytics</strong> cookies to improve this site.
+    <a href="/privacy-policy/" class="cookie-notice-link">Privacy &amp; Cookie Policy</a>. Do you accept?
+  </span>
+  <div class="cookie-notice-actions">
+    <button id="cookie-notice-accept" class="cookie-notice-btn cookie-notice-btn--accept">Accept</button>
+    <button id="cookie-notice-deny" class="cookie-notice-btn cookie-notice-btn--deny">Decline</button>
+  </div>
+</div>
+{{- end }}

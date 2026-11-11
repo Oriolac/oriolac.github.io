@@ -94,7 +94,7 @@ reveals that both mechanisms compute similarity-based weights and aggregate stor
 When the keys and values correspond to the same memory patterns, and the scaling parameters are appropriately matched,
 the two operations become equivalent.
 
-### 1.2. Modern Hopfield Networks
+### 1.2. Hopfield-Fenchel-Young (HFY) Networks
 
 Although softmax provides a differentiable and computationally effective mechanism, it assigns **strictly positive
 weights** to every stored memory, regardless of how weakly a memory is related to the query.

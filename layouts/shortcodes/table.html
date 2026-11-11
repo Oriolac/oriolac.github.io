@@ -1,0 +1,6 @@
+{{- $caption := .Get "caption" -}}
+{{- $id := .Get "id" -}}
+<figure class="table-figure"{{ with $id }} id="{{ . }}"{{ end }}>
+  {{ .Inner | markdownify }}
+  {{ with $caption }}<figcaption class="table-caption">{{ . | markdownify }}</figcaption>{{ end }}
+</figure>

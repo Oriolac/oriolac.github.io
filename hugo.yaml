@@ -80,6 +80,7 @@ params:
   ShowCodeCopyButtons: true
   ShowFullTextinRSS: true
   ShowToc: true
+  TocOpen: true
   ShowRssButtonInSectionTermList: true
   publications:
     - text: "Alàs, O., Cervera, R., & Sanfeliu, R. (2026). **A Scalable Real-Time Multi-Camera Vehicle Tracking System for Urban Environments**. IEEE Access"

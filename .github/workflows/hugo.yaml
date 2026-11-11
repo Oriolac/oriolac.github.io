@@ -40,11 +40,8 @@ jobs:
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb          
       - name: Install Dart Sass
         run: |
-          curl -fsSL \
-            https://github.com/sass/dart-sass/releases/latest/download/dart-sass-1.93.2-linux-x64.tar.gz \
-            -o dart-sass.tar.gz
-          tar -xzf dart-sass.tar.gz
-          echo "$PWD/dart-sass" >> "$GITHUB_PATH"
+          npm install -g sass
+          sass --version
       - name: Checkout
         uses: actions/checkout@v4
         with:

@@ -194,6 +194,34 @@
 
 .post-content table {
     margin-bottom: var(--content-gap);
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    max-width: 100%;
+}
+
+.post-content table th,
+.post-content table td {
+    text-align: center;
+}
+
+/* Table with caption ({{< table caption="..." >}}) */
+.post-content figure.table-figure {
+    margin: 1.5em 0;
+    text-align: center;
+    overflow-x: auto;
+}
+
+.post-content figure.table-figure table {
+    margin-bottom: 0;
+}
+
+.post-content figure.table-figure > figcaption.table-caption {
+    color: var(--secondary);
+    font-size: 15px;
+    font-weight: normal;
+    margin: 8px 0 0;
+    text-align: center;
 }
 
 .post-content table th,
@@ -204,9 +232,7 @@
     border-bottom: 1px solid var(--border);
 }
 
-.post-content table th {
-    text-align: start;
-}
+
 
 .post-content table:not(.highlighttable) td code:only-child {
     margin: auto 0;

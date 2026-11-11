@@ -600,6 +600,7 @@ img.in-text {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    margin-top: 12px;
     margin-bottom: 10px;
 }
 

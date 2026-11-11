@@ -27,6 +27,9 @@
       {{- partial "post_canonical.html" . -}}
     </div>
     {{- end }}
+    {{- if eq .Section "posts" }}
+    {{- partial "download-post.html" . }}
+    {{- end }}
   </header>
   {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
   {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
@@ -50,9 +53,6 @@
   {{- end }}
 
   <footer class="post-footer">
-    {{- if eq .Section "posts" }}
-    {{- partial "download-post.html" . }}
-    {{- end }}
     {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
     <div class="post-meta">Tags:</div>
     <ul class="post-tags">

@@ -188,6 +188,18 @@ intermediate LLM hidden states through gated cross-attention. Unlike retrieval-b
 representations directly from the
 preceding context, eliminating explicit retrieval during inference.
 
+Therefore, the main objective of this work is to develop a RAG system capable of incorporating
+neural hidden states directly into a generative language model without training an adapter. The main contributions are
+as follows:
+* Neural Information Retrieval can be effective when sparse HFY networks serve as the memory component.
+* Sparse Attention in HFY networks is critical for generating grounded responses.
+* HFY update function helps mitigate the lack of cross-attention between context and query at intermediate 
+hidden layers.
+* MaxSim function enables the integration of token-level hidden-state representations with Hopfield-based associative
+retrieval.
+* The system can perform retrieval and generation using a single forward pass, followed by a small number of
+associative memory updates.
+
 ## 2. Late Interaction Hopfield-Fenchel-Young Network
 
 Building upon these directions, this work investigates **Late Interaction Associative Memories with
@@ -261,7 +273,7 @@ representations within each memory, preserving fine-grained semantic corresponde
 Finally, both weighting mechanisms are combined to reconstruct an updated query representation as a weighted aggregation
 of the original, unnormalized memory hidden states:
 
-\[  Q_i^{(k+1)} = \sum_{j=1}^{N} w_j^{(k)} \sum_{t=1}^{T_j} A_{j,i,t}^{(k)}M_{j,t} \]
+\[ Q_i^{(k+1)} = \sum_{j=1}^{N} w_j^{(k)} \sum_{t=1}^{T_j} A_{j,i,t}^{(k)}M_{j,t} \]
 
 where \(w_j^{(k)}\) denotes the \(\alpha\)-entmax weight assigned to memory \(j\) based on its late-interaction
 similarity to the current query, and \(A_{j,i,t}^{(k)}\) represents the token-level \(\alpha\)-entmax alignment between
@@ -279,7 +291,6 @@ back into natural language. The resulting hidden states are projected into vocab
 normalisation and language modelling head, from which the next token is selected using greedy decoding. The current
 methodology only retrieves the associative memory once, before autoregressive generation begins. However, it reinjects
 that same retrieved memory at every decoding step.
-
 
 ## 3. Results and discussion
 

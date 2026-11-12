@@ -65,7 +65,7 @@ Modern Hopfield Networks are particularly interesting because their standard ret
 equivalent to the softmax attention mechanism used in Transformers, under an appropriate parameterization. At each step
 \(i\), the hopfield network calculate similarities between the \(q_{i}\) and each memory:
 
-\[s_i = \beta m_j^T q_{i}, \qquad \forall j \in m \]
+\[s_i = \beta m_j^T q_{i}, \qquad \forall m_j \in M \]
 
 Here, \(\beta\) is an inverse-temperature parameter that controls the sharpness of retrieval. Then, the
 weights are calculated using an activation function like softmax:
@@ -212,19 +212,56 @@ compressed embedding-based memories and conventional text-based retrieval-augmen
 
 ### 2.1. Late Interaction Associative Memory Integration
 
-Our proposed architecture integrates a Late Interaction HFY memory module into an intermediate
+The proposed architecture integrates a Late Interaction HFY memory module into an intermediate
 layer of a decoder-only LLM, as illustrated in Figure 2.
 
-First, a memory bank is built by extracting the hidden states of stored sentences after \(L_{\mathrm{pre}}\)
+First, a memory bank is built by extracting the hidden states of stored sentences \(\mathbf{S} = \{s_0, s_1, ..., s_
+{S} \, | \, s_i = (t_1, t_2, ..., t_{T_i}) \}\) after \(L_{\mathrm{pre}}\)
 Transformer layers. Rather than applying sequence pooling, the complete token-level representations is preserved:
 
-\[ M_j=H^{(L_{\mathrm{pre}})}(x_j) \in\mathbb{R}^{T_j\times d} \]
+\[ m_j=H^{(L_{\mathrm{pre}})}(s_j), \qquad m_j \in\mathbb{R}^{T_j\times d} \]
 
-Given an input query, we can extract its hidden states from the same layer, obtaining \(Q\in\mathbb{R}^{T_q\times d}\).
-These representations are used to retrieve associated memories through an iterative update that combines
-late-interaction similarity with HFY-based sparse weighting:
+Since the sequences have variable lengths, the resulting hidden states are zero-padded to the maximum sequence length,
+yielding a memory tensor \(\mathbf{M}\in\mathbb{R}^{S\times T_{\max}\times d}\). A corresponding binary attention mask
+identifies valid token positions, ensuring that padded representations are excluded from the late-interaction similarity
+computation.
 
-\[Q_i^{(k+1)} = \sum_{j=1}^{N} w_j^{(k)} \sum_{t=1}^{T_j} A_{j,i,t}^{(k)}M_{j,t} \]
+Given an input query, we can extract its hidden states from the \(L_{\mathrm{pre}}\) layers, obtaining
+\(Q\in\mathbb{R}^{T_q\times d}\).
+The proposed associative retrieval mechanism then iteratively updates this representations through two complementary
+sparse weighting operations: sentence-level memory selection and token-level alignment.
+
+First, a late-interaction similarity is computed between each query token and every valid token of each stored memory.
+Using cosine similarity, the token-level similarity tensor at iteration \(k\) is defined as:
+\[ S_{j,i,t}^{(k)} = \operatorname{cos}\left(Q_i^{(k)},M_{j,t}\right). \]
+
+Following the MaxSim late-interaction formulation, a relevance score is computed for each stored memory by selecting
+the maximum token similarity for each query token and averaging the resulting scores:
+
+\[ s_j^{(k)}= \frac{1}{T_q} \sum_{i=1}^{T_q} \max_{t\in\{1,\ldots,T_j\}} S_{j,i,t}^{(k)}. \]
+
+These relevance scores are
+transformed into sparse memory-selection weights using an HFY-compatible entmax mapping:
+
+\[ \mathbf{w}^{(k)}= \operatorname{entmax}_{\alpha_{\mathrm{sent}}} (\beta_{\mathrm{sent}}\mathbf{s}^{(k)}). \]
+
+Here, \(\alpha_{\mathrm{sent}}\) controls the sparsity of sentence-level selection, while \(\beta_{\mathrm{sent}}>0\)
+is an inverse-temperature parameter that scales the similarity scores and influences the concentration of the resulting
+distribution.
+
+In parallel with sentence-level memory selection, a second HFY-compatible entmax operation computes sparse alignments
+between each query token and the tokens within each stored memory:
+\[ A_{j,i,:}^{(k)} = \operatorname{entmax}_{\alpha_{\mathrm{tok}}} \left(\beta_{\mathrm{tok}} S_{j,i,:}^{(k)} \right).\]
+
+In this case, \(\alpha_{\mathrm{tok}}\) controls the sparsity of token-level alignment, while
+\(\beta_{\mathrm{tok}}>0\) determines the concentration of the alignment distribution. Unlike sentence-level selection,
+which determines the contribution of each stored sequence, token-level alignment identifies the most relevant token
+representations within each memory, preserving fine-grained semantic correspondences.
+
+Finally, both weighting mechanisms are combined to reconstruct an updated query representation as a weighted aggregation
+of the original, unnormalized memory hidden states:
+
+\[  Q_i^{(k+1)} = \sum_{j=1}^{N} w_j^{(k)} \sum_{t=1}^{T_j} A_{j,i,t}^{(k)}M_{j,t} \]
 
 where \(w_j^{(k)}\) denotes the \(\alpha\)-entmax weight assigned to memory \(j\) based on its late-interaction
 similarity to the current query, and \(A_{j,i,t}^{(k)}\) represents the token-level \(\alpha\)-entmax alignment between
@@ -234,11 +271,15 @@ After \(K\) associative iterations, the retrieved representation \(R=Q^{(K)}\in\
 query's sequence length and the model's hidden dimension. Finally, rather than reconstructing the retrieved memories as
 text, we can prepend the associated representation directly to the query hidden states:
 
-\[ H=[R;Q]\in\mathbb{R}^{2T_q\times d} \]
+\[ H=[R;Q], \qquad H \in\mathbb{R}^{2T_q\times d} \]
 
 The concatenated representations are then processed by the remaining \(L_{\mathrm{post}}\) Transformer layers, allowing
 the model to incorporate retrieved information directly into its internal computation without converting the memories
-back into natural language.
+back into natural language. The resulting hidden states are projected into vocabulary logits through the final
+normalisation and language modelling head, from which the next token is selected using greedy decoding. The current
+methodology only retrieves the associative memory once, before autoregressive generation begins. However, it reinjects
+that same retrieved memory at every decoding step.
+
 
 ## 3. Results and discussion
 
@@ -525,7 +566,9 @@ The architecture is particularly interesting because memory sentences and the qu
 independently through the first \(L_{\mathrm{pre}}\) Transformer layers. No cross-sequence attention is computed between
 them during this initial encoding. Nevertheless, after the retrieved representations are prepended to the query hidden
 states, the remaining \(L_{\mathrm{post}}\) layers can establish contextual interactions between both sequences and use
-this information during generation.
+this information during generation. Investigating iterative associative memory retrieval could be an interesting
+research direction to be considered, as partially generated responses could provide additional context to improve
+memory retrieval and memory-query-answer cross-attention.
 
 However, top-1 memory injection shows how a raw hidden state with the information cannot let the model answer correctly.
 This demonstrates that is the **result of query and associated memories** what gives **enough information** to the

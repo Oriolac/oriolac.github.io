@@ -617,6 +617,7 @@ img.in-text {
     font-size: 14px;
     font-family: inherit;
     cursor: pointer;
+    text-decoration: none;
     transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 

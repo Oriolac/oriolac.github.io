@@ -1,5 +1,5 @@
 <div class="post-download">
-  <button class="download-btn" onclick="window.print(); if(window.trackEvent) window.trackEvent('post_interaction','engagement','pdf_download');" title="Print or save as PDF via your browser">
+  <button class="download-btn" onclick="printPost(this); if(window.trackEvent) window.trackEvent('post_interaction','engagement','pdf_download');" title="Print or save as PDF via your browser">
     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
     <span>PDF</span>
   </button>
@@ -23,6 +23,33 @@
 
 <script>
 (function () {
+  // Images are lazy-loaded, so those below the fold are not fetched yet and
+  // print blank. Force them to load (and wait) before opening the print dialog.
+  function loadAllImages() {
+    const imgs = Array.from(document.querySelectorAll('.post-content img'));
+    imgs.forEach(img => { img.loading = 'eager'; });
+    return Promise.all(imgs.map(img =>
+      img.complete ? Promise.resolve()
+        : new Promise(res => { img.addEventListener('load', res, { once: true }); img.addEventListener('error', res, { once: true }); })
+    ));
+  }
+
+  async function printPost(btn) {
+    const label = btn.querySelector('span');
+    const orig = label.textContent;
+    label.textContent = '…';
+    btn.disabled = true;
+    try { await loadAllImages(); } finally {
+      label.textContent = orig;
+      btn.disabled = false;
+    }
+    window.print();
+  }
+
+  // Also covers Ctrl/Cmd+P and the browser menu
+  window.addEventListener('beforeprint', loadAllImages);
+  window.printPost = printPost;
+
   async function downloadEpub(btn) {
     const label = btn.querySelector('span');
     const origLabel = label.textContent;

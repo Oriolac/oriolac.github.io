@@ -5,6 +5,7 @@ draft = false
 tags = ['deep-learning', 'associative-memories', 'hopfield-networks', 'hopfield-fenchel-young', 'sparse-functions', 'nlp', 'transformers', 'attention']
 metaDescription = 'Exploring training-free Hopfield-Fenchel-Young networks with late interaction for sparse retrieval and direct integration of LLM hidden-state memories.'
 recommendations = ['20241029-attention', '20260410-loss-functions-activations']
+repo = 'https://github.com/Oriolac/late-interaction-hopfield-fenchel-young-introduction'
 [cover]
 image = "/posts/2026/hfy-late-interaction/portrait.png"
 +++

@@ -638,6 +638,11 @@ img.in-text {
 }
 
 /* Print / PDF output */
+@page {
+    size: A4 portrait;
+    margin: 15mm;
+}
+
 @media print {
     header.header,
     footer.footer,
@@ -663,8 +668,23 @@ img.in-text {
         padding: 0 !important;
         color: black !important;
         background: white !important;
-        font-size: 12pt;
+        font-size: 12px;
         text-align: left !important;
+    }
+
+    /* Body text is 18px on screen via .post-content p; force 12px in print */
+    .post-content p,
+    .post-content li,
+    .post-content dd,
+    .post-content dt,
+    .post-content td,
+    .post-content th,
+    .post-content blockquote,
+    .post-content figcaption,
+    .post-content figure > figcaption > p,
+    .post-content figure.table-figure > figcaption.table-caption {
+        font-size: 12px !important;
+        line-height: 1.5;
     }
 
     .post-title { font-size: 24pt; }
@@ -675,7 +695,7 @@ img.in-text {
         border: 1px solid #ccc;
         background: #f8f8f8 !important;
         color: black !important;
-        font-size: 9pt;
+        font-size: 10px;
         white-space: pre-wrap;
         page-break-inside: avoid;
     }

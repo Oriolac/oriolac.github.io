@@ -106,7 +106,7 @@
 
 
 /* Responsive adjustment for small screens */
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
     /* Remove fixed positioning and make the ToC inline */
     .toc-container {
         position: relative;
@@ -347,6 +347,7 @@
     background: var(--code-bg);
     border-radius: var(--radius);
     padding: 0.4em;
+    font-size: 16px;
 }
 
 .dark .toc {
@@ -360,6 +361,10 @@
 
 .toc details[open] summary {
     cursor: zoom-out;
+}
+
+.toc details[open] {
+    font-size: 14px;
 }
 
 .toc .details {

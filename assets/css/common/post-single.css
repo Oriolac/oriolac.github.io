@@ -651,7 +651,9 @@ img.in-text {
     .recommendations-sidebar,
     .recommendations-mobile,
     .post-download,
-    .post-tags,
+    .post-tags {
+        display: none !important;
+    }
     .paginav,
     .share-buttons,
     .top-link,
@@ -669,7 +671,7 @@ img.in-text {
         color: black !important;
         background: white !important;
         font-size: 12px;
-        text-align: left !important;
+        text-align: justify !important;
     }
 
     /* Body text is 18px on screen via .post-content p; force 12px in print */
@@ -711,5 +713,27 @@ img.in-text {
         content: " (" attr(href) ")";
         font-size: .8em;
         color: #555;
+    }
+
+    .post-content img,
+    .post-content figure img {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+
+        max-width: 100% !important;
+        height: auto !important;
+
+        break-inside: avoid;
+        page-break-inside: avoid;
+
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Keep image captions together */
+    .post-content figure {
+        break-inside: avoid;
+        page-break-inside: avoid;
     }
 }
